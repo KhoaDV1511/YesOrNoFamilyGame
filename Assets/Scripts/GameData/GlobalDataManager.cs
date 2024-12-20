@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GlobalDataManager : MonoBehaviour
@@ -16,5 +17,11 @@ public class GlobalDataManager : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        _ins = FindObjectOfType<GlobalDataManager>();
+    }
+
     public LevelOneData levelOneData;
+    public FlashPanel flashPanel;
 }
