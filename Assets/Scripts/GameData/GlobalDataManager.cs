@@ -17,4 +17,5 @@ public class GlobalDataManager : MonoBehaviour
     }
 
     public LevelOneData levelOneData;
+    public FlashPanel flashPanel;
 }
