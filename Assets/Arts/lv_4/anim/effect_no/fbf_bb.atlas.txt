@@ -1,0 +1,17 @@
+fbf_bb.png
+size:1024,512
+filter:Linear,Linear
+pma:true
+1
+bounds:442,2,146,145
+2
+bounds:590,51,100,96
+3
+bounds:442,149,325,316
+4
+bounds:2,31,438,434
+5
+bounds:769,28,210,213
+rotate:90
+6
+bounds:769,240,219,225

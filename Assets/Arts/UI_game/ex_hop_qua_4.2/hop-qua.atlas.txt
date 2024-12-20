@@ -1,0 +1,18 @@
+hop-qua.png
+size:2048,512
+filter:Linear,Linear
+pma:true
+01
+bounds:489,70,430,352
+impact (80)
+bounds:1894,294,128,128
+line (1)
+bounds:1380,189,233,512
+offsets:12,0,256,512
+rotate:90
+nap
+bounds:921,103,457,319
+no
+bounds:2,2,485,420
+particle (3)
+bounds:1894,164,128,128
