@@ -1,0 +1,393 @@
+nam_chinh.png
+size:4096,4096
+filter:Linear,Linear
+pma:true
+1_1 (1)
+bounds:2891,1345,470,224
+offsets:187,533,822,902
+rotate:90
+1_1 (10)
+bounds:1164,1747,279,720
+offsets:240,37,822,902
+1_1 (11)
+bounds:793,3038,279,752
+offsets:240,13,822,902
+rotate:90
+1_1 (12)
+bounds:1580,3053,285,704
+offsets:234,59,822,902
+rotate:90
+1_1 (13)
+bounds:1113,1067,228,667
+offsets:268,90,822,902
+1_1 (14)
+bounds:1726,1230,246,666
+offsets:270,90,822,902
+1_1 (15)
+bounds:1993,1896,243,672
+offsets:263,88,822,902
+1_1 (16)
+bounds:1483,2570,247,673
+offsets:259,81,822,902
+rotate:90
+1_1 (17)
+bounds:1445,1719,260,748
+offsets:251,9,822,902
+1_1 (18)
+bounds:1707,1898,284,670
+offsets:234,93,822,902
+1_1 (19)
+bounds:1974,1242,253,652
+offsets:256,104,822,902
+1_1 (2)
+bounds:2625,2192,511,326
+offsets:159,439,822,902
+1_1 (20)
+bounds:2229,1239,245,655
+offsets:259,104,822,902
+1_1 (21)
+bounds:2,5,273,705
+offsets:237,49,822,902
+rotate:90
+1_1 (22)
+bounds:731,2469,280,740
+offsets:234,13,822,902
+rotate:90
+1_1 (23)
+bounds:731,2751,285,750
+offsets:235,13,822,902
+rotate:90
+1_1 (24)
+bounds:884,1736,278,731
+offsets:241,17,822,902
+1_1 (25)
+bounds:574,763,297,779
+offsets:268,3,822,902
+1_1 (26)
+bounds:651,1588,231,810
+offsets:279,13,822,902
+1_1 (27)
+bounds:2801,2520,228,628
+offsets:272,117,822,902
+rotate:90
+1_1 (28)
+bounds:1547,2819,232,693
+offsets:272,94,822,902
+rotate:90
+1_1 (29)
+bounds:2801,2750,235,646
+offsets:284,94,822,902
+rotate:90
+1_1 (3)
+bounds:1343,1168,549,381
+offsets:141,382,822,902
+rotate:90
+1_1 (30)
+bounds:873,844,238,742
+offsets:273,0,822,902
+1_1 (31)
+bounds:2809,3220,234,735
+offsets:278,0,822,902
+rotate:90
+1_1 (32)
+bounds:2809,2987,231,701
+offsets:278,9,822,902
+rotate:90
+1_1 (33)
+bounds:2825,3456,108,902
+offsets:313,0,822,902
+rotate:90
+1_1 (34)
+bounds:2192,401,97,204
+offsets:296,298,822,902
+rotate:90
+1_1 (35)
+bounds:1987,500,16,69
+offsets:381,390,822,902
+1_1 (36)
+bounds:3504,1779,12,30
+offsets:383,391,822,902
+1_1 (4)
+bounds:2248,3471,575,623
+offsets:119,142,822,902
+1_1 (5)
+bounds:2,2400,727,853
+offsets:17,4,822,902
+1_1 (6)
+bounds:793,3319,785,775
+offsets:0,7,822,902
+1_1 (7)
+bounds:2,3255,789,839
+offsets:33,7,822,902
+1_1 (8)
+bounds:1580,3340,666,754
+offsets:75,9,822,902
+1_1 (9)
+bounds:3755,3375,320,719
+offsets:254,37,822,902
+_ tuc_gian/1
+bounds:3504,2585,249,214
+offsets:1,1,251,216
+_ tuc_gian/10
+bounds:3138,2122,314,396
+offsets:1,1,316,398
+_ tuc_gian/11
+bounds:3117,1341,321,399
+offsets:1,1,323,401
+rotate:90
+_ tuc_gian/12
+bounds:3755,2969,329,404
+offsets:1,1,331,406
+_ tuc_gian/13
+bounds:3755,2568,333,399
+offsets:1,1,335,401
+_ tuc_gian/14
+bounds:1343,823,343,399
+offsets:2,2,346,402
+rotate:90
+_ tuc_gian/15
+bounds:2841,493,349,366
+offsets:1,2,351,369
+rotate:90
+_ tuc_gian/16
+bounds:3209,486,351,356
+offsets:1,2,353,359
+_ tuc_gian/17
+bounds:3383,996,355,343
+offsets:1,1,357,346
+_ tuc_gian/18
+bounds:807,410,351,342
+offsets:2,1,354,344
+rotate:90
+_ tuc_gian/19
+bounds:3754,2210,356,313
+offsets:2,1,360,315
+rotate:90
+_ tuc_gian/20
+bounds:3763,1846,362,296
+offsets:1,1,364,299
+rotate:90
+_ tuc_gian/21
+bounds:3740,1044,354,221
+offsets:2,2,357,224
+_ tuc_gian/22
+bounds:2829,315,356,176
+offsets:1,1,358,178
+_ tuc_gian/23
+bounds:3187,316,356,168
+offsets:1,2,358,171
+_ tuc_gian/24
+bounds:1473,2469,118,99
+offsets:2,1,121,101
+_ tuc_gian/3
+bounds:3526,2,251,312
+offsets:0,1,252,314
+_ tuc_gian/4
+bounds:1315,347,224,336
+offsets:0,1,225,338
+rotate:90
+_ tuc_gian/5
+bounds:3562,508,222,362
+offsets:1,1,224,364
+_ tuc_gian/6
+bounds:3518,1436,255,373
+offsets:1,1,257,375
+_ tuc_gian/7
+bounds:3504,1811,257,389
+offsets:1,1,259,391
+_ tuc_gian/8
+bounds:2238,1902,281,390
+offsets:2,1,284,392
+rotate:90
+_ tuc_gian/9
+bounds:2432,439,296,395
+offsets:1,1,298,397
+rotate:90
+ban_tay_buon
+bounds:3786,694,277,348
+ban_tay_idel
+bounds:709,2,276,209
+rotate:90
+cake_duoi
+bounds:3683,1341,54,77
+rotate:90
+cake_tren
+bounds:1834,144,142,194
+offsets:0,1,143,195
+cang_tay
+bounds:1652,578,348,192
+canh_tay_nam
+bounds:2049,500,358,381
+rotate:90
+canh_tay_ph_idel
+bounds:572,280,233,411
+canh_tay_tr_1
+bounds:1653,340,236,332
+rotate:90
+canh_tay_tro_ph
+bounds:3775,1481,363,274
+rotate:90
+cherry_3
+bounds:807,307,103,101
+dau_1
+bounds:2192,279,138,120
+offsets:0,0,138,121
+dau_tay
+bounds:2286,3083,521,386
+offsets:1,1,523,387
+dua_hau_duoi
+bounds:1430,130,194,215
+effect_giat_minh
+bounds:2476,1058,297,409
+rotate:90
+giay
+bounds:2825,3566,263,928
+rotate:90
+giay copy
+bounds:2825,3831,263,928
+rotate:90
+hanh
+bounds:1626,135,206,203
+offsets:0,1,207,204
+khay
+bounds:2,280,568,411
+khoi
+bounds:2630,1817,485,373
+offsets:2,3,489,382
+long_may_bt
+bounds:3683,1397,101,37
+long_may_nhiu
+bounds:1568,2,126,47
+rotate:90
+luoi_cay
+bounds:2158,2704,113,86
+rotate:90
+mat_cuoi_tr
+bounds:1483,2950,86,52
+rotate:90
+mat_nhiu_ph
+bounds:574,697,90,64
+mat_soc
+bounds:2438,737,401,319
+offsets:16,16,431,353
+mat_tim
+bounds:3454,2202,381,298
+offsets:13,14,407,323
+rotate:90
+mat_tr
+bounds:1593,2505,86,63
+mat_tr_cay
+bounds:873,770,86,72
+mieng_bt
+bounds:3518,1341,163,93
+mieng_buon
+bounds:3889,8,167,92
+mieng_buon_1
+bounds:2476,1817,147,83
+mieng_cay
+bounds:1165,2,123,89
+mieng_cuoi
+bounds:1151,427,161,86
+mieng_hanh
+bounds:731,3044,60,58
+mieng_nhai
+bounds:3779,2,98,108
+rotate:90
+moi_duoi_nhai
+bounds:731,3104,149,60
+rotate:90
+moi_giua
+bounds:731,2414,139,53
+moi_hon
+bounds:2625,2568,152,117
+moi_tren_nhai
+bounds:651,1549,159,37
+ngon_tay
+bounds:3679,872,84,122
+ngon_tay_cam_tren
+bounds:1987,365,133,203
+rotate:90
+no_hoi
+bounds:1473,2732,8,17
+nuoc_mat_1
+bounds:1164,1736,16,9
+nuoc_mat_2
+bounds:1974,1230,22,10
+nuoc_mat_3
+bounds:2779,2647,38,20
+rotate:90
+ot
+bounds:2002,654,116,45
+offsets:0,0,117,45
+rotate:90
+ot_duoi
+bounds:1430,2,136,126
+offsets:2,0,138,126
+qua_cherry
+bounds:3117,1664,456,385
+rotate:90
+que
+bounds:1315,573,248,335
+offsets:3,0,251,344
+rotate:90
+tay_bun
+bounds:2238,2185,385,500
+tay_cam_khay_DUOI
+bounds:884,1607,127,211
+rotate:90
+tay_cam_khay_duoi_1
+bounds:1744,772,303,456
+tay_cam_khay_tren
+bounds:1151,515,162,345
+tay_duoi_mo
+bounds:3546,3157,297,207
+rotate:90
+tay_hon
+bounds:2286,2687,394,513
+rotate:90
+tay_nam
+bounds:3786,1267,212,308
+rotate:90
+tay_nam_duoi
+bounds:1113,862,228,203
+tay_nam_tren
+bounds:1165,93,263,252
+tay_nam_tren_mo
+bounds:3786,453,239,264
+rotate:90
+tay_ph_idel
+bounds:3365,872,122,312
+rotate:90
+tay_soc_tr
+bounds:2887,844,220,476
+rotate:90
+tay_tr_cay
+bounds:2,693,570,849
+tay_tro_ph
+bounds:3187,2,312,337
+rotate:90
+than
+bounds:2,1544,647,854
+that_lung
+bounds:2887,1066,494,273
+toc
+bounds:2476,1357,413,458
+trai_tim copy 2
+bounds:1290,2,103,89
+trong_mat
+bounds:3454,2161,39,39
+trong_mat_duoi_tr
+bounds:3449,2905,80,37
+rotate:90
+trong_mat_duoi_tr_cay
+bounds:2002,571,81,45
+rotate:90
+tuc_gian
+bounds:2049,860,387,377
+offsets:26,21,439,419
+vai_ph
+bounds:3779,102,243,349
+vai_ph_idle
+bounds:3512,2801,241,354
+vai_tr
+bounds:920,60,243,348

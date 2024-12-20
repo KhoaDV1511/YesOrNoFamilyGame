@@ -1,0 +1,304 @@
+tia_nuoc.png
+size:4096,4096
+filter:Linear,Linear
+pma:true
+Layer 13
+bounds:798,1253,782,610
+offsets:4,3,898,733
+Layer 15
+bounds:1594,1292,764,584
+offsets:3,3,898,725
+Layer 16
+bounds:2,3116,794,624
+offsets:3,2,898,756
+Layer 21
+bounds:1594,1878,782,610
+offsets:4,3,898,733
+Layer 23
+bounds:1582,86,764,586
+offsets:3,1,898,725
+Layer 24
+bounds:1594,3116,793,624
+offsets:4,2,898,756
+Layer 28
+bounds:1582,674,759,616
+offsets:3,3,898,749
+Layer 29
+bounds:798,642,782,609
+offsets:4,3,789,613
+Layer 31
+bounds:2378,1309,764,584
+offsets:3,4,770,591
+Layer 32
+bounds:2,2490,794,624
+offsets:3,2,800,626
+Layer 37
+bounds:2389,2506,783,609
+offsets:3,3,789,613
+Layer 39
+bounds:2360,720,764,587
+offsets:3,1,770,591
+Layer 40
+bounds:2,1239,794,623
+offsets:3,3,800,626
+Layer 44
+bounds:2348,102,759,616
+offsets:3,3,765,619
+Layer 45
+bounds:3184,3131,783,609
+offsets:3,3,789,613
+Layer 47
+bounds:3126,709,764,587
+offsets:3,1,770,591
+Layer 48
+bounds:798,3116,794,624
+offsets:3,2,800,626
+Layer 5
+bounds:2,2,782,610
+offsets:4,3,898,733
+Layer 53
+bounds:2389,1895,783,609
+offsets:3,3,789,613
+Layer 56
+bounds:2,1864,794,624
+offsets:3,2,800,626
+Layer 61
+bounds:797,31,782,609
+offsets:4,3,789,613
+Layer 64
+bounds:798,2490,794,624
+offsets:3,2,800,626
+Layer 69
+bounds:3184,2520,783,609
+offsets:3,3,789,613
+Layer 72
+bounds:2389,3117,793,623
+offsets:4,3,800,626
+Layer 76
+bounds:3109,91,759,616
+offsets:3,3,765,619
+Layer 77
+bounds:3174,1298,782,609
+offsets:4,3,789,613
+Layer 8
+bounds:2,614,793,623
+offsets:4,3,898,756
+Layer 80
+bounds:798,1865,794,623
+offsets:3,3,800,626
+Layer 85
+bounds:3174,1909,783,609
+offsets:3,3,789,613
+Layer 88
+bounds:1594,2490,793,624
+offsets:4,2,800,626
+
+tia_nuoc_2.png
+size:4096,4096
+filter:Linear,Linear
+pma:true
+Layer 1
+bounds:1522,2021,666,599
+offsets:4,3,898,733
+Layer 10
+bounds:1503,1424,698,595
+offsets:3,17,898,731
+Layer 11
+bounds:2871,1335,734,576
+offsets:3,17,898,731
+rotate:90
+Layer 12
+bounds:2,3388,758,616
+offsets:4,3,898,749
+Layer 14
+bounds:2697,2812,739,603
+offsets:4,17,898,731
+Layer 17
+bounds:2190,2021,666,599
+offsets:4,3,898,733
+Layer 18
+bounds:3379,182,698,579
+offsets:3,33,898,731
+Layer 19
+bounds:1904,242,733,575
+offsets:4,18,898,731
+Layer 20
+bounds:2,2770,758,616
+offsets:4,3,898,749
+Layer 22
+bounds:591,792,740,570
+offsets:3,54,898,735
+rotate:90
+Layer 25
+bounds:2203,1420,666,599
+offsets:4,3,898,733
+Layer 27
+bounds:2639,757,734,576
+offsets:3,21,898,735
+Layer 30
+bounds:2639,185,738,570
+offsets:4,3,745,576
+Layer 36
+bounds:762,3388,758,616
+offsets:4,3,765,619
+Layer 38
+bounds:3447,2676,739,570
+offsets:4,50,758,623
+rotate:90
+Layer 4
+bounds:2,2152,758,616
+offsets:4,3,898,749
+Layer 46
+bounds:3449,1935,739,570
+offsets:4,50,758,623
+rotate:90
+Layer 52
+bounds:762,2770,758,616
+offsets:4,3,765,619
+Layer 54
+bounds:762,1546,739,604
+offsets:4,13,758,620
+Layer 55
+bounds:1522,2622,764,587
+offsets:3,2,770,592
+rotate:90
+Layer 6
+bounds:591,50,740,570
+offsets:3,50,898,731
+rotate:90
+Layer 60
+bounds:1522,3388,758,616
+offsets:4,3,765,619
+Layer 63
+bounds:2282,3417,764,587
+offsets:3,2,770,592
+Layer 66
+bounds:3375,763,699,570
+offsets:3,42,758,615
+Layer 68
+bounds:2,1534,758,616
+offsets:4,3,765,619
+Layer 7
+bounds:2111,2622,764,584
+offsets:3,3,898,725
+rotate:90
+Layer 70
+bounds:2858,2071,739,587
+offsets:4,33,758,623
+rotate:90
+Layer 71
+bounds:2,768,764,587
+offsets:3,2,770,592
+rotate:90
+Layer 73
+bounds:1904,819,723,599
+offsets:4,3,758,606
+Layer 78
+bounds:1163,835,739,587
+offsets:4,33,758,623
+Layer 79
+bounds:3048,3417,764,587
+offsets:3,1,770,591
+Layer 84
+bounds:762,2152,758,616
+offsets:4,3,765,619
+Layer 86
+bounds:1163,246,739,587
+offsets:4,31,758,621
+Layer 87
+bounds:2,2,764,587
+offsets:3,1,770,591
+rotate:90
+
+tia_nuoc_3.png
+size:4096,4096
+filter:Linear,Linear
+pma:true
+Layer 2
+bounds:2,2,699,551
+offsets:3,61,898,731
+Layer 26
+bounds:2556,2948,698,551
+offsets:3,65,898,735
+Layer 3
+bounds:2,3499,733,576
+offsets:4,17,898,731
+Layer 33
+bounds:703,4,667,599
+offsets:3,3,758,606
+rotate:90
+Layer 34
+bounds:578,2073,698,551
+offsets:3,61,758,615
+rotate:90
+Layer 35
+bounds:737,3501,733,574
+offsets:4,20,758,597
+Layer 41
+bounds:3256,2900,666,599
+offsets:4,3,758,606
+Layer 42
+bounds:578,1373,698,551
+offsets:3,61,758,615
+rotate:90
+Layer 43
+bounds:1472,3501,733,574
+offsets:4,20,758,597
+Layer 49
+bounds:1131,1749,667,599
+offsets:3,3,758,606
+Layer 50
+bounds:1155,2903,698,596
+offsets:3,10,758,609
+Layer 51
+bounds:2207,3501,733,574
+offsets:4,10,758,587
+Layer 57
+bounds:1133,1081,666,599
+offsets:4,3,758,606
+rotate:90
+Layer 58
+bounds:580,673,698,551
+offsets:3,61,758,615
+rotate:90
+Layer 59
+bounds:2,555,731,576
+offsets:4,1,738,580
+rotate:90
+Layer 62
+bounds:2,2758,739,570
+offsets:4,47,758,620
+rotate:90
+Layer 65
+bounds:1734,1117,666,599
+offsets:4,3,758,606
+Layer 67
+bounds:2942,3501,733,574
+offsets:4,20,758,597
+Layer 74
+bounds:574,2773,724,579
+offsets:3,33,758,615
+rotate:90
+Layer 75
+bounds:2,2023,733,574
+offsets:4,20,758,597
+rotate:90
+Layer 81
+bounds:1855,2319,667,599
+offsets:3,3,758,606
+Layer 82
+bounds:1855,2920,699,579
+offsets:3,31,758,613
+Layer 83
+bounds:2,1288,733,574
+offsets:4,18,758,595
+rotate:90
+Layer 89
+bounds:1734,516,666,599
+offsets:4,3,673,606
+Layer 9
+bounds:1800,1718,667,599
+offsets:3,3,898,733
+Layer 90
+bounds:1155,2350,698,551
+offsets:3,29,704,583
