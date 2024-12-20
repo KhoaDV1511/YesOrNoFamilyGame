@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
+  m_Name: efec_muc_den_loang_Atlas
+  m_EditorClassIdentifier: 
+  textureLoadingMode: 0
+  onDemandTextureLoader: {fileID: 0}
+  atlasFile: {fileID: 4900000, guid: 35fb5f32da9cd36458bcb40eb593e674, type: 3}
+  materials:
+  - {fileID: 2100000, guid: affe26d8aa12ae64d9be45e083a48887, type: 2}
+  - {fileID: 2100000, guid: a62a0a6fcc9d04e4e9a137f9c1852a24, type: 2}
+  - {fileID: 2100000, guid: b49a6cd09f1b0f74c953005f38084d53, type: 2}
+  - {fileID: 2100000, guid: 4f8ae83cbebc4da4892eafa286e64fd4, type: 2}
+  - {fileID: 2100000, guid: aba3594d58332c5409e01c5d1ca66e55, type: 2}
+  - {fileID: 2100000, guid: f854cb2cf53e9984eb890573d2aeeb03, type: 2}
+  - {fileID: 2100000, guid: 8b1fca3f5b44c1247acb0141472f037d, type: 2}

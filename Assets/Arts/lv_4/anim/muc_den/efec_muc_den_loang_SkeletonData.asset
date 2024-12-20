@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1b3b4b945939a54ea0b23d3396115fb, type: 3}
+  m_Name: efec_muc_den_loang_SkeletonData
+  m_EditorClassIdentifier: 
+  atlasAssets:
+  - {fileID: 11400000, guid: 90658142ab59ef24c8e7bebc2f731dcd, type: 2}
+  scale: 0.01
+  skeletonJSON: {fileID: 4900000, guid: f75db10c47f9b9445b91b0995feba0e8, type: 3}
+  isUpgradingBlendModeMaterials: 0
+  blendModeMaterials:
+    requiresBlendModeMaterials: 1
+    applyAdditiveMaterial: 1
+    additiveMaterials: []
+    multiplyMaterials:
+    - pageName: efec_muc_den_loang_4.png
+      material: {fileID: 2100000, guid: 82205a80e6b3fc24382e77aaf8e7222f, type: 2}
+    - pageName: efec_muc_den_loang_5.png
+      material: {fileID: 2100000, guid: d46bd8cdb91e9ee4bba00e885aef1bc4, type: 2}
+    - pageName: efec_muc_den_loang_2.png
+      material: {fileID: 2100000, guid: dbdca6146b07d844f859e6b498066264, type: 2}
+    - pageName: efec_muc_den_loang.png
+      material: {fileID: 2100000, guid: 0a9ce01146184bb41bf44d878529f085, type: 2}
+    - pageName: efec_muc_den_loang_6.png
+      material: {fileID: 2100000, guid: 9e509aba9a35e0846931cc7e9cea4a6d, type: 2}
+    - pageName: efec_muc_den_loang_3.png
+      material: {fileID: 2100000, guid: cddb1a95adc32064b822b15a88816afa, type: 2}
+    - pageName: efec_muc_den_loang_7.png
+      material: {fileID: 2100000, guid: 9d778b134a49115469365b2e67222d00, type: 2}
+    screenMaterials: []
+  skeletonDataModifiers: []
+  fromAnimation: []
+  toAnimation: []
+  duration: []
+  defaultMix: 0.2
+  controller: {fileID: 0}
