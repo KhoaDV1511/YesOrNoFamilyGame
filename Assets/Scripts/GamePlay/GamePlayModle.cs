@@ -14,7 +14,8 @@ public class GamePlayModle : Singleton<GamePlayModle>
             PlayerPrefs.SetInt(KeyLevel, value);
         }
     }
-    public long _coin = -1;
+
+    private long _coin = -1;
     private const string KeyCoin = "coin_game_play";
     public long Coin
     {
@@ -27,4 +28,6 @@ public class GamePlayModle : Singleton<GamePlayModle>
             PlayerPrefs.SetString(KeyCoin, value.ToString());
         }
     }
+
+    public int currentLevel;
 }
