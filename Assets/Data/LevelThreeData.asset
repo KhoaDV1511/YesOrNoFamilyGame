@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a573e506c5274276a21e98e80bef3301, type: 3}
+  m_Name: LevelThreeData
+  m_EditorClassIdentifier: 
+  animPlayThreeInfos:
+  - isChoose: 0
+    typePlay: 0
+    sprItem: {fileID: 21300000, guid: c810475f38d8c2f4eae917e671a9ed4d, type: 3}
+    itemAnim: 0100000007000000
+    itemAnimPoke: 13
+  - isChoose: 0
+    typePlay: 1
+    sprItem: {fileID: 21300000, guid: 090186d28700b194dbb1abd5c505cfa6, type: 3}
+    itemAnim: 0000000006000000
+    itemAnimPoke: 12
+  - isChoose: 0
+    typePlay: 2
+    sprItem: {fileID: 21300000, guid: ec710c72eacadd24d9fb9dcd176b1ccf, type: 3}
+    itemAnim: 0200000008000000
+    itemAnimPoke: 11
+  - isChoose: 0
+    typePlay: 3
+    sprItem: {fileID: 21300000, guid: 95eecb814ccc78142a38a796315ab3e2, type: 3}
+    itemAnim: 0300000009000000
+    itemAnimPoke: 15
+  - isChoose: 0
+    typePlay: 4
+    sprItem: {fileID: 21300000, guid: 85301d4ec94284d429c44268870f1737, type: 3}
+    itemAnim: 040000000a000000
+    itemAnimPoke: 14

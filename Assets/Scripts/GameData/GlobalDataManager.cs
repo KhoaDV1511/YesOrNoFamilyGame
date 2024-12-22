@@ -24,5 +24,6 @@ public class GlobalDataManager : MonoBehaviour
 
     public LevelOneData levelOneData;
     public LevelTwoData levelTwoData;
+    public LevelThreeData levelThreeData;
     public FlashPanel flashPanel;
 }

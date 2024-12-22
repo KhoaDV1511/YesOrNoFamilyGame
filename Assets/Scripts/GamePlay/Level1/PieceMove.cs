@@ -8,7 +8,7 @@ public class PieceMove : MonoBehaviour, IPointerClickHandler, IDragHandler, IBeg
     public TypeFood typeFood;
     private RectTransform _rectTransform;
     private Canvas _canvas;
-    private Action<TypeFood> typeFoodOpen;
+    private Action<int> typeFoodOpen;
 
     private void Start()
     {
@@ -16,7 +16,7 @@ public class PieceMove : MonoBehaviour, IPointerClickHandler, IDragHandler, IBeg
         _canvas = FindObjectOfType<Canvas>();
     }
 
-    public void InitAddListener(Action<TypeFood> type)
+    public void InitAddListener(Action<int> type)
     {
         gameObject.Show();
         typeFoodOpen = type;
@@ -45,7 +45,7 @@ public class PieceMove : MonoBehaviour, IPointerClickHandler, IDragHandler, IBeg
         if (distancePiece >= 2f)
         {
             Debug.Log($"{typeFood}-{distancePiece}");
-            typeFoodOpen.Invoke(typeFood);
+            typeFoodOpen.Invoke((int)typeFood);
             gameObject.Hide();
         }
     }

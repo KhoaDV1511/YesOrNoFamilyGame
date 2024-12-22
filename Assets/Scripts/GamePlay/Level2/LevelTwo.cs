@@ -8,10 +8,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 
-public class LevelTwo : MonoBehaviour, IPointerClickHandler
+public class LevelTwo : BaseLevel, IPointerClickHandler
 {
     [SerializeField] private SkeletonGraphic girlPouringWater;
-    [SerializeField] private List<CharacterInfo> characterInfos;
     [SerializeField] private CharacterInfo charInPlay;
     private LevelTwoData levelTwoData => GlobalDataManager.Ins.levelTwoData;
     private float _posClick;
@@ -20,6 +19,7 @@ public class LevelTwo : MonoBehaviour, IPointerClickHandler
     private AnimPlayTwoInfo _itemLeft, _itemRight;
     private const int girlPouring = 0, girlIdle = 1, girlNotWater = 2;
     private Sequence _sqGirl;
+    private Tween _twChoose;
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -42,17 +42,19 @@ public class LevelTwo : MonoBehaviour, IPointerClickHandler
             charPlaying.character.SetAnimChar((int)ItemAnimTwo.IdleNotBoxLeft, true);
         }
         _isChoose = false;
-        DOVirtual.DelayedCall(1.33f, () => ShowAnimReceiveTypePlay(itemPlay.typePlay));
+        _twChoose?.Kill();
+        _twChoose = DOVirtual.DelayedCall(1.33f, () => ShowAnimReceiveTypePlay((int)itemPlay.typePlay));
     }
     
     [Button]
-    public void StartPlay()
+    public override void StartPlay()
     {
         levelTwoData.animPlayTwoInfos.ForEach(t => t.isChoose = false);
         InitCharacter();
     }
-    private void InitCharacter()
+    public override void InitCharacter()
     {
+        InitCharacterPlay();
         var charToPlaying = characterInfos[Random.Range(0, characterInfos.Count)];
         charToPlaying.isPlaying = true;
         foreach (var c in characterInfos)
@@ -63,7 +65,7 @@ public class LevelTwo : MonoBehaviour, IPointerClickHandler
         SwapInitPosCharacter(charToPlaying, characterInfos.Find(c => c.rect.localScale.x > 0.5f));
     }
     
-    private void SwapInitPosCharacter(CharacterInfo characterToPlaying, CharacterInfo characterToWait)
+    public override void SwapInitPosCharacter(CharacterInfo characterToPlaying, CharacterInfo characterToWait)
     {
         characterToWait.isPlaying = false;
         characterToPlaying.isPlaying = true;
@@ -78,21 +80,16 @@ public class LevelTwo : MonoBehaviour, IPointerClickHandler
         _isChoose = true;
         SetBoxItem();
     }
-    private void ShowAnimReceiveTypePlay(TypePlayTwoChoose typePlay)
+    public override void ShowAnimReceiveTypePlay(int typePlay)
     {
         var charPlaying = characterInfos.Find(c => c.isPlaying);
         charPlaying.isPlayed = true;
         Debug.Log($"show anim typeFood: {typePlay}");
         var itemAnimLevelOnes = levelTwoData.animPlayTwoInfos
-            .Find(a => a.typePlay == typePlay).itemAnim.Select(i => (int)i).ToArray();
+            .Find(a => a.typePlay == (TypePlayTwoChoose)typePlay).itemAnim.Select(i => (int)i).ToArray();
         GirlPouringWater();
         charPlaying.character.ShowAnimReceiveResultChoose(itemAnimLevelOnes , () => 
             SwapPosCharPlaying(charPlaying, FindCharPlay()));
-    }
-    private CharacterInfo FindCharPlay()
-    {
-        return characterInfos.Count(c => !c.isPlayed) <= 0 ? null 
-            : characterInfos.Where(c => !c.isPlayed).ToList()[Random.Range(0, characterInfos.Count(c => !c.isPlayed))];
     }
     private void GirlPouringWater()
     {
@@ -120,7 +117,7 @@ public class LevelTwo : MonoBehaviour, IPointerClickHandler
         girlPouringWater.startingLoop = loop;
         girlPouringWater.Initialize(true);
     }
-    private void SwapPosCharPlaying(CharacterInfo charPlaying, CharacterInfo charToPLay)
+    public override void SwapPosCharPlaying(CharacterInfo charPlaying, CharacterInfo charToPLay)
     {
         UpdateProgress();
         if (_progress >= characterInfos.Count)
@@ -161,7 +158,7 @@ public class LevelTwo : MonoBehaviour, IPointerClickHandler
 
         _itemRight.isChoose = true;
     }
-    private void UpdateProgress()
+    public override void UpdateProgress()
     {
         _progress++;
         Signals.Get<UpdateProgressSignals>().Dispatch(_progress, characterInfos.Count);

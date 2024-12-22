@@ -8,10 +8,9 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class LevelOne : MonoBehaviour
+public class LevelOne : BaseLevel
 {
     [SerializeField] private SkeletonGraphic skeleton;
-    [SerializeField] private List<CharacterInfo> characterInfos;
     [SerializeField] private PieceMove[] pieceMoves;
     [SerializeField] private CharacterInfo charInPlay;
     private List<TypeFood> typeFoods;
@@ -28,19 +27,14 @@ public class LevelOne : MonoBehaviour
     }
 
     [Button]
-    public void StartPlay()
-    {
-        InitPlay();
-    }
-
-    private void InitPlay()
+    public override void StartPlay()
     {
         InitPiece();
         InitCharacter();
     }
-
-    private void InitCharacter()
+    public override void InitCharacter()
     {
+        InitCharacterPlay();
         var charToPlaying = characterInfos[Random.Range(0, characterInfos.Count)];
         charToPlaying.isPlaying = true;
         foreach (var c in characterInfos)
@@ -50,13 +44,8 @@ public class LevelOne : MonoBehaviour
         
         SwapInitPosCharacter(charToPlaying, characterInfos.Find(c => c.rect.localScale.x > 0.5f));
     }
-
-    private CharacterInfo FindCharPlay()
-    {
-        return characterInfos.Count(c => !c.isPlayed) <= 0 ? null 
-            : characterInfos.Where(c => !c.isPlayed).ToList()[Random.Range(0, characterInfos.Count(c => !c.isPlayed))];
-    }
-    private void SwapInitPosCharacter(CharacterInfo characterToPlaying, CharacterInfo characterToWait)
+    
+    public override void SwapInitPosCharacter(CharacterInfo characterToPlaying, CharacterInfo characterToWait)
     {
         if (characterToPlaying != characterToWait)
         {
@@ -79,23 +68,23 @@ public class LevelOne : MonoBehaviour
         {                                                                                                    
             var typeFood = Random.Range(0, typeFoods.Count(t => !typeFoodSet.Contains(t)));        
             p.typeFood = typeFoods.Where(t => !typeFoodSet.Contains(t)).ToList()[typeFood];        
-            p.InitAddListener(ShowAnimReceiveTypeFood);
+            p.InitAddListener(ShowAnimReceiveTypePlay);
             typeFoodSet.Add(p.typeFood);                                                                       
         }                                                                                                    
     }
 
-    private void ShowAnimReceiveTypeFood(TypeFood typeFood)
+    public override void ShowAnimReceiveTypePlay(int typePlay)
     {
         var charPlaying = characterInfos.Find(c => c.isPlaying);
         charPlaying.isPlayed = true;
-        Debug.Log($"show anim typeFood: {typeFood}");
+        Debug.Log($"show anim typeFood: {typePlay}");
         var itemAnimLevelOnes = levelOneData.animFoodInfos
-            .Find(a => a.typeFood == typeFood).itemAnimLevelOnes.Select(i => (int)i).ToArray();
+            .Find(a => a.typeFood == (TypeFood)typePlay).itemAnimLevelOnes.Select(i => (int)i).ToArray();
         charPlaying.character.ShowAnimReceiveResultChoose(itemAnimLevelOnes , () => 
             SwapPosCharPlaying(charPlaying, FindCharPlay()));
     }
 
-    private void SwapPosCharPlaying(CharacterInfo charPlaying, CharacterInfo charToPLay)
+    public override void SwapPosCharPlaying(CharacterInfo charPlaying, CharacterInfo charToPLay)
     {
         UpdateProgress();
         if (_progress >= characterInfos.Count)
@@ -112,7 +101,7 @@ public class LevelOne : MonoBehaviour
         
     }
 
-    private void UpdateProgress()
+    public override void UpdateProgress()
     {
         _progress++;
         Signals.Get<UpdateProgressSignals>().Dispatch(_progress, characterInfos.Count);
