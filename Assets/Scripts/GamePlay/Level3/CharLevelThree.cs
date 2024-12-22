@@ -9,11 +9,11 @@ public class CharLevelThree : CharacterJoinPlay
     [Button]
     public void SetSkeletonWait()
     {
-        SetSkeleton(skeletonWait, (int)ItemAnimLevelOne.Idle, true);
+        SetSkeleton(skeletonWait, 0, true);
     }
     [Button]
     public void SetSkeletonPlay()
     {
-        SetSkeleton(skeletonPlay, (int)ItemAnimTwo.Idle, true);
+        SetSkeleton(skeletonPlay, 0, true);
     }
 }

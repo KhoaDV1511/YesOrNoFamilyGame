@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae6cbc8590a24f48b1b2d97ecf97b76a, type: 3}
+  m_Name: LevelFourData
+  m_EditorClassIdentifier: 
+  animPlayFourInfos:
+  - typePlayFourChoose: 0
+    itemAnim: 0600000007000000
+  - typePlayFourChoose: 1
+    itemAnim: 08000000090000000a0000000b000000
+  pokeFourInfos:
+  - isChoose: 0
+    itemAnimPoke: 1
+    typeBubbleWater: 0
+  - isChoose: 0
+    itemAnimPoke: 2
+    typeBubbleWater: 1
+  - isChoose: 0
+    itemAnimPoke: 3
+    typeBubbleWater: 2
+  - isChoose: 0
+    itemAnimPoke: 4
+    typeBubbleWater: 3
+  - isChoose: 0
+    itemAnimPoke: 5
+    typeBubbleWater: 4

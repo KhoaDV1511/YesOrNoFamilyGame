@@ -47,7 +47,7 @@ public class CharacterJoinPlay : MonoBehaviour
             _sqCharacter.AppendInterval(time)
                 .AppendCallback(() =>
                 {
-                    Debug.Log($"show anim receive food: {item[itemAnim[i1]].Name}");
+                    //Debug.Log($"show anim receive food: {item[itemAnim[i1]].Name}");
                     SetAnimChar(itemAnim[i1], false);
                     if (i1 >= itemAnim.Length - 1)
                     {
@@ -102,7 +102,9 @@ public class CharacterJoinPlay : MonoBehaviour
     [Button]
     public void SetAnimChar(int indexAnim, bool loop)
     {
-        skeleton.startingAnimation = skeleton.SkeletonData.Animations.Items[indexAnim].Name;
+        var nameAnim = indexAnim >= skeleton.SkeletonData.Animations.Items.Length ? "idle"
+            : skeleton.SkeletonData.Animations.Items[indexAnim].Name;
+        skeleton.startingAnimation = nameAnim;
         skeleton.startingLoop = loop;
         skeleton.Initialize(true);
     }
