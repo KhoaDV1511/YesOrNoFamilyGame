@@ -11,12 +11,12 @@ public class CharLevelTwo : CharacterJoinPlay
     [Button]
     public void SetSkeletonWait()
     {
-        SetSkeleton(skeletonWait, 0, true);
+        SetSkeleton(skeletonWait, (int)ItemAnimLevelOne.Idle, true);
     }
     [Button]
     public void SetSkeletonPlay()
     {
-        SetSkeleton(skeletonPlay, 0, true);
+        SetSkeleton(skeletonPlay, (int)ItemAnimTwo.Idle, true);
     }
     public void ChooseRight(Sprite sprItem)
     {

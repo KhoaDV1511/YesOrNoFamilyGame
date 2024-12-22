@@ -49,6 +49,8 @@ public class LevelTwo : BaseLevel, IPointerClickHandler
     [Button]
     public override void StartPlay()
     {
+        _progress = 0;
+        Signals.Get<UpdateProgressSignals>().Dispatch(_progress, characterInfos.Count);
         levelTwoData.animPlayTwoInfos.ForEach(t => t.isChoose = false);
         InitCharacter();
     }
@@ -132,9 +134,8 @@ public class LevelTwo : BaseLevel, IPointerClickHandler
         charPlaying.character.Cast<CharLevelTwo>().HideBox(); 
         charPlaying.character.ShowAnimToBackIdle(charToPLay, (int)ItemAnimLevelOne.Idle);
         charToPLay.isPlaying = true;
-        charToPLay.character.Cast<CharLevelTwo>().SetSkeletonPlay(); 
         charToPLay.character.Cast<CharLevelTwo>().HideBox(); 
-        charToPLay.character.ShowAnimMoveToPlayIdle((int)ItemAnimTwo.Idle);
+        charToPLay.character.ShowAnimMoveToPlayIdle((int)ItemAnimLevelOne.Idle, () => charToPLay.character.Cast<CharLevelTwo>().SetSkeletonPlay());
           
         _isChoose = true;
         SetBoxItem();

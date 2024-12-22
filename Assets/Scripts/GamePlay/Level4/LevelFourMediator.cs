@@ -15,6 +15,8 @@ public class LevelFourMediator : BaseLevel
     [Button]
     public override void StartPlay()
     {
+        _progress = 0;
+        Signals.Get<UpdateProgressSignals>().Dispatch(_progress, characterInfos.Count);
         muc.Hide();
         InitCharacter();
         InitBubble();

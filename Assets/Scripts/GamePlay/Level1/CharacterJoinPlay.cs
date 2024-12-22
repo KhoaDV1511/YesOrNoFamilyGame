@@ -58,7 +58,7 @@ public class CharacterJoinPlay : MonoBehaviour
         }
     }
 
-    public void ShowAnimMoveToPlayIdle(int indexAnim)
+    public void ShowAnimMoveToPlayIdle(int indexAnim, Action setSkeleton = null)
     {
         _sqCharacter?.Kill();
         rect.SetAsLastSibling();
@@ -67,6 +67,7 @@ public class CharacterJoinPlay : MonoBehaviour
             .AppendCallback(() =>
             {
                 SetAnimChar(indexAnim, true);
+                setSkeleton?.Invoke();
             });
     }
     public void ShowAnimToBackIdle(CharacterInfo characterInfo, int indexAnim)

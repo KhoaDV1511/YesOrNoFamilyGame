@@ -14,6 +14,8 @@ public class LevelThreeMediator : BaseLevel
     [Button]
     public override void StartPlay()
     {
+        _progress = 0;
+        Signals.Get<UpdateProgressSignals>().Dispatch(_progress, characterInfos.Count);
         InitCharacter();
         InitBubble();
     }
@@ -55,8 +57,8 @@ public class LevelThreeMediator : BaseLevel
         characterToPlaying.isPlaying = true;
         if (characterToPlaying != characterToWait)
         {
-            characterToPlaying.character.Cast<CharLevelThree>().SetSkeletonPlay();
-            characterToWait.character.Cast<CharLevelThree>().SetSkeletonWait();  
+            characterToPlaying.character.Cast<CharLevelChangeSkeleton>().SetSkeletonPlay((int)ItemAnimThree.Idle);
+            characterToWait.character.Cast<CharLevelChangeSkeleton>().SetSkeletonWait((int)ItemAnimLevelOne.Idle);  
             characterToWait.character.AnimInitIdleWait(characterToPlaying, (int)ItemAnimLevelOne.Idle);
             characterToPlaying.character.AnimInitIdlePlay((int)ItemAnimThree.Idle);
         }
@@ -85,10 +87,10 @@ public class LevelThreeMediator : BaseLevel
         }
         if(charToPLay == null) return;
         charPlaying.isPlaying = false;
-        charPlaying.character.Cast<CharLevelThree>().SetSkeletonWait(); 
+        charPlaying.character.Cast<CharLevelChangeSkeleton>().SetSkeletonWait((int)ItemAnimLevelOne.Idle); 
         charPlaying.character.ShowAnimToBackIdle(charToPLay, (int)ItemAnimLevelOne.Idle);
         charToPLay.isPlaying = true;
-        charToPLay.character.Cast<CharLevelThree>().SetSkeletonPlay(); 
+        charToPLay.character.Cast<CharLevelChangeSkeleton>().SetSkeletonPlay((int)ItemAnimThree.Idle); 
         charToPLay.character.ShowAnimMoveToPlayIdle((int)ItemAnimThree.Idle);
     }
 
