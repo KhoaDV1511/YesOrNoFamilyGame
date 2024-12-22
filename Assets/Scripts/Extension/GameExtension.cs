@@ -34,4 +34,9 @@ public static class GameExtension
         c.a = f;
         s.color = c;
     }
+    public static T Cast<T>(this MonoBehaviour mono) where T : class
+    {
+        var t = mono as T;
+        return t;
+    }
 }

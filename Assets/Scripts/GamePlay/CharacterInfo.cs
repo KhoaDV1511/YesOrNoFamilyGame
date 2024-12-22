@@ -4,7 +4,7 @@ using UnityEngine;
 [Serializable]
 public class CharacterInfo
 {
-    public CharacterLevelOne character;
+    public CharacterJoinPlay character;
     public bool isPlayed;
     public bool isPlaying;
     public RectTransform rect => character.GetComponent<RectTransform>();

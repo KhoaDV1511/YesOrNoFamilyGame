@@ -13,6 +13,7 @@ public class LevelOne : MonoBehaviour
     [SerializeField] private SkeletonGraphic skeleton;
     [SerializeField] private List<CharacterInfo> characterInfos;
     [SerializeField] private PieceMove[] pieceMoves;
+    [SerializeField] private CharacterInfo charInPlay;
     private List<TypeFood> typeFoods;
     private int _indexCharacterPlay, _progress;
     private LevelOneData levelOneData => GlobalDataManager.Ins.levelOneData;
@@ -47,7 +48,7 @@ public class LevelOne : MonoBehaviour
             c.character.SetAnimChar((int)ItemAnimLevelOne.Idle, true);
         }
         
-        SwapInitPosCharacter(charToPlaying, characterInfos.Find(c => c.rect.localScale.x > 0.4f));
+        SwapInitPosCharacter(charToPlaying, characterInfos.Find(c => c.rect.localScale.x > 0.5f));
     }
 
     private CharacterInfo FindCharPlay()
@@ -57,8 +58,12 @@ public class LevelOne : MonoBehaviour
     }
     private void SwapInitPosCharacter(CharacterInfo characterToPlaying, CharacterInfo characterToWait)
     {
-        characterToWait.character.AnimInitIdleWait(characterToPlaying, (int)ItemAnimLevelOne.Idle);
-        characterToPlaying.character.AnimInitIdlePlay((int)ItemAnimLevelOne.Idle);
+        if (characterToPlaying != characterToWait)
+        {
+            characterToWait.character.AnimInitIdleWait(characterToPlaying, (int)ItemAnimLevelOne.Idle);
+            characterToPlaying.character.AnimInitIdlePlay((int)ItemAnimLevelOne.Idle);
+        }
+        
         characterToPlaying.isPlaying = true;
         characterToWait.isPlaying = false;
     }

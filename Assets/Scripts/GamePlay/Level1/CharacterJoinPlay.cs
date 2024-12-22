@@ -5,12 +5,12 @@ using Sirenix.OdinInspector;
 using Spine.Unity;
 using UnityEngine;
 
-public class CharacterLevelOne : MonoBehaviour
+public class CharacterJoinPlay : MonoBehaviour
 {
     [SerializeField] private SkeletonGraphic skeleton;
     [SerializeField] private Vector3 posPlay;
     private RectTransform rect => skeleton.GetComponent<RectTransform>();
-    private float _scalePlay = 0.6f, _scaleIdle = 0.4f;
+    [SerializeField] private float _scalePlay = 0.6f, _scaleIdle = 0.4f;
     private Sequence _sqCharacter;
 
     [Button]
@@ -99,10 +99,17 @@ public class CharacterLevelOne : MonoBehaviour
         rect.SetAsLastSibling();
     }
 
+    [Button]
     public void SetAnimChar(int indexAnim, bool loop)
     {
         skeleton.startingAnimation = skeleton.SkeletonData.Animations.Items[indexAnim].Name;
         skeleton.startingLoop = loop;
         skeleton.Initialize(true);
+    }
+
+    public void SetSkeleton(SkeletonDataAsset skeletonDataAsset, int indexAnim, bool loop)
+    {
+        skeleton.skeletonDataAsset = skeletonDataAsset;
+        SetAnimChar(indexAnim, loop);
     }
 }
