@@ -3,7 +3,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class LevelFiveMediator : BaseLevel, IPointerClickHandler
+public class LevelFiveMediator : BaseLevel
 {
     [SerializeField] private GameObject objTable;
     private LevelFiveData levelFiveData => GlobalDataManager.Ins.levelFiveData;
@@ -22,6 +22,10 @@ public class LevelFiveMediator : BaseLevel, IPointerClickHandler
     public override void InitCharacter()
     {
         InitCharacterPlay();
+        foreach (var c in characterInfos)
+        {
+            c.character.Cast<CharLevelFive>().InitChoose(ShowAnimReceiveTypePlay);
+        }
         var charToPlaying = characterInfos[Random.Range(0, characterInfos.Count)];
         charToPlaying.isPlaying = true;
         SwapInitPosCharacter(charToPlaying, characterInfos.Find(c => c.rect.localScale.x > 0.5f));
@@ -33,8 +37,8 @@ public class LevelFiveMediator : BaseLevel, IPointerClickHandler
         characterToPlaying.isPlaying = true;
         if (characterToPlaying != characterToWait)
         {
-            characterToPlaying.character.Cast<CharLevelChangeSkeleton>().SetSkeletonPlay((int)ItemAnimLevelOne.Idle);
-            characterToWait.character.Cast<CharLevelChangeSkeleton>().SetSkeletonWait((int)ItemAnimFive.Idle);  
+            characterToPlaying.character.Cast<CharLevelThree>().SetSkeletonPlay((int)ItemAnimLevelOne.Idle);
+            characterToWait.character.Cast<CharLevelThree>().SetSkeletonWait((int)ItemAnimFive.Idle);  
             characterToWait.character.AnimInitIdleWait(characterToPlaying, (int)ItemAnimLevelOne.Idle);
             characterToPlaying.character.AnimInitIdlePlay((int)ItemAnimFive.Idle);
         }
@@ -43,6 +47,8 @@ public class LevelFiveMediator : BaseLevel, IPointerClickHandler
 
     public override void ShowAnimReceiveTypePlay(int typePlay)
     {
+        if(!_isChoose) return;
+        _isChoose = false;
         var charPlaying = characterInfos.Find(c => c.isPlaying);
         charPlaying.isPlayed = true;
         Debug.Log($"show anim typeFood: {typePlay}");
@@ -77,13 +83,13 @@ public class LevelFiveMediator : BaseLevel, IPointerClickHandler
             charToPLay = FindCharPlay();
         }
         charPlaying.isPlaying = false;
-        charPlaying.character.Cast<CharLevelChangeSkeleton>().SetSkeletonWait((int)ItemAnimLevelOne.Idle); 
+        charPlaying.character.Cast<CharLevelThree>().SetSkeletonWait((int)ItemAnimLevelOne.Idle); 
         charPlaying.character.ShowAnimToBackIdle(charToPLay, (int)ItemAnimLevelOne.Idle);
         objTable.Hide();
         charToPLay.isPlaying = true;
         charToPLay.character.ShowAnimMoveToPlayIdle((int)ItemAnimLevelOne.Idle, () =>
         {
-            charToPLay.character.Cast<CharLevelChangeSkeleton>().SetSkeletonPlay((int)ItemAnimFive.Idle);
+            charToPLay.character.Cast<CharLevelThree>().SetSkeletonPlay((int)ItemAnimFive.Idle);
             objTable.Show();
         });
         _isChoose = true;
@@ -93,15 +99,5 @@ public class LevelFiveMediator : BaseLevel, IPointerClickHandler
     {
         //_progress++;
         Signals.Get<UpdateProgressSignals>().Dispatch(_progress, characterInfos.Count);
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if(!_isChoose) return;
-        _isChoose = false;
-        var randomIndex = characterInfos.Count(c => c.isPlayed) > 2
-            ? levelFiveData.animPlayFiveInfos.Count
-            : levelFiveData.animPlayFiveInfos.Count - 1;
-        ShowAnimReceiveTypePlay(Random.Range(0, levelFiveData.animPlayFiveInfos.Count));
     }
 }

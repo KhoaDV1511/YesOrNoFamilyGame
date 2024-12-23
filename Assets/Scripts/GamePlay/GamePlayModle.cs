@@ -2,6 +2,14 @@ using UnityEngine;
 
 public class GamePlayModle : Singleton<GamePlayModle>
 {
+    public const int levelMax = 5;
+    public const int coinReward = 100;
+    public int currentLevel;
+    public bool IsMaxLevel()
+    {
+        return Level >= levelMax;
+    }
+    
     private int _level = -1;
     private const string KeyLevel = "level_game_play";
     public int Level
@@ -28,6 +36,4 @@ public class GamePlayModle : Singleton<GamePlayModle>
             PlayerPrefs.SetString(KeyCoin, value.ToString());
         }
     }
-
-    public int currentLevel;
 }

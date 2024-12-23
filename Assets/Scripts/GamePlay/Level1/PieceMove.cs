@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -9,11 +10,14 @@ public class PieceMove : MonoBehaviour, IPointerClickHandler, IDragHandler, IBeg
     private RectTransform _rectTransform;
     private Canvas _canvas;
     private Action<int> typeFoodOpen;
+    private Vector2 _posInit;
+    private Sequence _sqBackPiece;
 
     private void Start()
     {
         _rectTransform = GetComponent<RectTransform>();
         _canvas = FindObjectOfType<Canvas>();
+        _posInit = _rectTransform.anchoredPosition;
     }
 
     public void InitAddListener(Action<int> type)
@@ -47,6 +51,12 @@ public class PieceMove : MonoBehaviour, IPointerClickHandler, IDragHandler, IBeg
             Debug.Log($"{typeFood}-{distancePiece}");
             typeFoodOpen.Invoke((int)typeFood);
             gameObject.Hide();
+        }
+        else
+        {
+            _sqBackPiece?.Kill();
+            _sqBackPiece = DOTween.Sequence()
+                .Append(_rectTransform.DOAnchorPos(_posInit, 0.5f).From(_rectTransform.anchoredPosition));
         }
     }
 }

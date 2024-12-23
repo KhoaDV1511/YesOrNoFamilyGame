@@ -44,6 +44,7 @@ public class GamePlayMediator : MonoBehaviour
             if (i == _gamePlayModle.Level - 1)
             {
                 baseLevels[i].StartPlay();
+                progressPlay.ShowView();
                 var i1 = i;
                 this.ShowFlashWithCallBack(() =>
                 {
@@ -65,11 +66,15 @@ public class GamePlayMediator : MonoBehaviour
         this.ShowFlashWithCallBack(() =>
         {
             Signals.Get<UpDateHomeSignals>().Dispatch();
+            PopupManager.OpenPopup<RewardPopup>(p =>
+            {
+                p.ShowView();
+                _gamePlayModle.Coin += GamePlayModle.coinReward;
+            });
         });
     }
     private void UpdateProgress(int progress, int total)
     {
-        progressPlay.ShowView(progress, total);
         bottom.SetActive(progress >= total);
     }
 }

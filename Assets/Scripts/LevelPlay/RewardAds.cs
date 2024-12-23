@@ -149,6 +149,7 @@ public class RewardAds : MonoBehaviour, BaseAds
         else
         {
             Debug.Log("ironsource: show but ads not available");
+            Toast.Show("Quảng cáo hiện không khả dụng");
             if (!_isOnLoadAds && _currentReloadAds < ironSourceConfig.maxCountReload)
             {
                 LoadAds();

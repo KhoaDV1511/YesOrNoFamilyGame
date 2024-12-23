@@ -2,7 +2,7 @@ using Sirenix.OdinInspector;
 using Spine.Unity;
 using UnityEngine;
 
-public class CharLevelChangeSkeleton : CharacterJoinPlay
+public class CharLevelThree : CharacterJoinPlay
 {
     [SerializeField] private SkeletonDataAsset skeletonWait, skeletonPlay;
     
