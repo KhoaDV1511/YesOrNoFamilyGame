@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GamePlayModle : Singleton<GamePlayModle>
 {
-    public const int levelMax = 5;
+    public const int levelMax = 6;
     public const int coinReward = 100;
     public int currentLevel;
     public bool IsMaxLevel()
@@ -15,11 +15,11 @@ public class GamePlayModle : Singleton<GamePlayModle>
     public int Level
     {
         get => _level == -1
-            ? PlayerPrefs.GetInt(KeyLevel, 1) : _level;
+            ? Mathf.Min(levelMax, PlayerPrefs.GetInt(KeyLevel, 1)) : Mathf.Min(levelMax, _level);
         set
         {
-            _level = value;
-            PlayerPrefs.SetInt(KeyLevel, value);
+            _level = Mathf.Min(levelMax, value);
+            PlayerPrefs.SetInt(KeyLevel, _level);
         }
     }
 
@@ -34,6 +34,28 @@ public class GamePlayModle : Singleton<GamePlayModle>
         {
             _coin = value;
             PlayerPrefs.SetString(KeyCoin, value.ToString());
+        }
+    }
+    private string _isMusic = "";
+    private const string KeyMusic = "key_music";
+    public bool IsOpenMusic
+    {
+        get => _isMusic == "" ? bool.Parse(PlayerPrefs.GetString(KeyMusic, "True")) : bool.Parse(_isMusic);
+        set
+        {
+            _isMusic = value.ToString();
+            PlayerPrefs.SetString(KeyMusic, value.ToString());
+        }
+    }
+    private string _isSound = "";
+    private const string KeyOpenSound = "key_sound";
+    public bool IsOpenSound
+    {
+        get => _isSound == "" ? bool.Parse(PlayerPrefs.GetString(KeyOpenSound, "True")) : bool.Parse(_isSound);
+        set
+        {
+            _isSound = value.ToString();
+            PlayerPrefs.SetString(KeyOpenSound, value.ToString());
         }
     }
 }

@@ -15,6 +15,7 @@ public class BubbleWater : MonoBehaviour
     private Action<ItemAnimFour> _animPoke;
     public TypePlayFourChoose typePlayFourChoose;
     public ItemAnimFour typePoke;
+    public bool isChoose;
     
     private void Start()
     {
@@ -23,6 +24,7 @@ public class BubbleWater : MonoBehaviour
 
     public void Init(Action<int> poke, Action<ItemAnimFour> animPoke)
     {
+        isChoose = true;
         _poke = poke;
         _animPoke = animPoke;
         bubble.Show();
@@ -32,6 +34,7 @@ public class BubbleWater : MonoBehaviour
 
     private void Poke()
     {
+        if(!isChoose) return;
         Debug.Log("poke");
         _animPoke?.Invoke(typePoke);
         _twShowEffect?.Kill();

@@ -1,6 +1,7 @@
 using System.Linq;
 using DG.Tweening;
 using Sirenix.OdinInspector;
+using Sirenix.Utilities;
 using Spine.Unity;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class LevelFourMediator : BaseLevel
     [SerializeField] private SkeletonGraphic muc;
     private int _progress;
     private Tween _twShowWater;
+    private Tween _twChoose;
     private LevelFourData levelFourData => GlobalDataManager.Ins.levelFourData;
     
     [Button]
@@ -64,6 +66,7 @@ public class LevelFourMediator : BaseLevel
 
     public override void ShowAnimReceiveTypePlay(int typePlay)
     {
+        bubbleWaters.ForEach(b => b.isChoose = false);
         var charPlaying = characterInfos.Find(c => c.isPlaying);
         charPlaying.isPlayed = true;
         Debug.Log($"show anim typeFood: {typePlay}");
@@ -104,6 +107,8 @@ public class LevelFourMediator : BaseLevel
         charToPLay.isPlaying = true;
         charToPLay.character.Cast<CharLevelFour>().SetSkeletonPlay(); 
         charToPLay.character.ShowAnimMoveToPlayIdle((int)ItemAnimFour.Idle);
+        _twChoose?.Kill();
+        _twChoose = DOVirtual.DelayedCall(0.5f, () => bubbleWaters.ForEach(p => p.isChoose = true));
     }
 
     public override void UpdateProgress()

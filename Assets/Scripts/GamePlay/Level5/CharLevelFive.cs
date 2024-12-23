@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using Spine.Unity;
 using UnityEngine;
@@ -9,20 +10,64 @@ public class CharLevelFive : CharacterJoinPlay
     [SerializeField] private SkeletonDataAsset skeletonWait, skeletonPlay;
     [SerializeField] private Button btnCam, btnDau, btnNho, btnSua, btnSocola, btnNuocOt;
     private Action<int> _typeChoose;
+    public bool isChoose;
 
     private void Start()
     {
-        btnCam.onClick.AddListener(() => _typeChoose?.Invoke((int)TypePlayFiveChoose.Cam));
-        btnDau.onClick.AddListener(() => _typeChoose?.Invoke((int)TypePlayFiveChoose.Dau));
-        btnNho.onClick.AddListener(() => _typeChoose?.Invoke((int)TypePlayFiveChoose.Nho));
-        btnSua.onClick.AddListener(() => _typeChoose?.Invoke((int)TypePlayFiveChoose.Sua));
-        btnSocola.onClick.AddListener(() => _typeChoose?.Invoke((int)TypePlayFiveChoose.Socola));
-        btnNuocOt.onClick.AddListener(() => _typeChoose?.Invoke((int)TypePlayFiveChoose.NuocOt));
+        btnCam.onClick.AddListener(ChooseCam);
+        btnDau.onClick.AddListener(ChooseDau);
+        btnNho.onClick.AddListener(ChooseNho);
+        btnSua.onClick.AddListener(ChooseSua);
+        btnSocola.onClick.AddListener(ChooseSocola);
+        btnNuocOt.onClick.AddListener(ChooseNuocOt);
     }
 
+    private void ChooseCam()
+    {
+        if (isChoose)
+        {
+            _typeChoose?.Invoke((int)TypePlayFiveChoose.Cam);
+        }
+    }
+    private void ChooseDau()
+    {
+        if (isChoose)
+        {
+            _typeChoose?.Invoke((int)TypePlayFiveChoose.Dau);
+        }
+    }
+    private void ChooseNho()
+    {
+        if (isChoose)
+        {
+            _typeChoose?.Invoke((int)TypePlayFiveChoose.Nho);
+        }
+    }
+    private void ChooseSua()
+    {
+        if (isChoose)
+        {
+            _typeChoose?.Invoke((int)TypePlayFiveChoose.Sua);
+        }
+    }
+    private void ChooseSocola()
+    {
+        if (isChoose)
+        {
+            _typeChoose?.Invoke((int)TypePlayFiveChoose.Socola);
+        }
+    }
+    private void ChooseNuocOt()
+    {
+        if (isChoose)
+        {
+            _typeChoose?.Invoke((int)TypePlayFiveChoose.NuocOt);
+        }
+    }
     public void InitChoose(Action<int> typeChoose)
     {
         _typeChoose = typeChoose;
+        isChoose = true;
     }
     [Button]
     public void SetSkeletonWait(int animIndex)

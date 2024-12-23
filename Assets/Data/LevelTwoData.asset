@@ -14,42 +14,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animPlayTwoInfos:
   - isWin: 1
-    isChoose: 0
+    isChoose: 1
     typePlay: 0
     sprItem: {fileID: 21300000, guid: 40a278663fb47234491694ab93c8751b, type: 3}
-    itemAnim: 000000000d000000
+    itemAnim: 060000000d000000
   - isWin: 0
-    isChoose: 0
+    isChoose: 1
     typePlay: 1
     sprItem: {fileID: 21300000, guid: 53b2395dadc2a6b42a55bd8f933b8692, type: 3}
-    itemAnim: 010000000b000000
+    itemAnim: 070000000b000000
   - isWin: 1
-    isChoose: 0
+    isChoose: 1
     typePlay: 2
     sprItem: {fileID: 21300000, guid: 2672861c03e0a054389c46a3f1d7b9db, type: 3}
-    itemAnim: 020000000d000000
+    itemAnim: 050000000d000000
   - isWin: 0
-    isChoose: 0
+    isChoose: 1
     typePlay: 3
-    sprItem: {fileID: 21300000, guid: 1e966b30f5f3fd04cb82c842645f0286, type: 3}
-    itemAnim: 030000000c000000
+    sprItem: {fileID: 21300000, guid: f5fa269849d291e4d91896e50719113f, type: 3}
+    itemAnim: 040000000c000000
   - isWin: 1
-    isChoose: 0
+    isChoose: 1
     typePlay: 4
-    sprItem: {fileID: 21300000, guid: 7b67c5116f64f564fbd1d6b4d062ee68, type: 3}
-    itemAnim: 040000000d000000
+    sprItem: {fileID: 21300000, guid: 8cbb3e7f365f62540a507e5bc98508d1, type: 3}
+    itemAnim: 030000000d000000
   - isWin: 0
-    isChoose: 0
+    isChoose: 1
     typePlay: 5
     sprItem: {fileID: 21300000, guid: 3ce110a61fc1dcd479b224ab3c6fb4dd, type: 3}
-    itemAnim: 050000000b000000
+    itemAnim: 010000000b000000
   - isWin: 0
     isChoose: 0
     typePlay: 6
     sprItem: {fileID: 21300000, guid: 29f106c42f223b8458a0466e26a88638, type: 3}
-    itemAnim: 060000000b000000
+    itemAnim: 020000000b000000
   - isWin: 1
     isChoose: 0
     typePlay: 7
     sprItem: {fileID: 21300000, guid: 2c25c5004a5859047be9258822f4ca3b, type: 3}
-    itemAnim: 070000000d000000
+    itemAnim: 000000000d000000

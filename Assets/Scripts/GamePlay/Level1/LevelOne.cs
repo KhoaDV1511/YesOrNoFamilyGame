@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using Sirenix.OdinInspector;
+using Sirenix.Utilities;
 using Spine.Unity;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -16,7 +18,7 @@ public class LevelOne : BaseLevel
     private List<TypeFood> typeFoods;
     private int _indexCharacterPlay, _progress;
     private LevelOneData levelOneData => GlobalDataManager.Ins.levelOneData;
-    
+    private Tween _twChoose;
 
     [Button]
     private void SetAnim()
@@ -55,8 +57,8 @@ public class LevelOne : BaseLevel
             characterToPlaying.character.AnimInitIdlePlay((int)ItemAnimLevelOne.Idle);
         }
         
+        characterToWait.isPlaying = false; 
         characterToPlaying.isPlaying = true;
-        characterToWait.isPlaying = false;
     }
     private void InitPiece()
     {
@@ -77,6 +79,7 @@ public class LevelOne : BaseLevel
 
     public override void ShowAnimReceiveTypePlay(int typePlay)
     {
+        pieceMoves.ForEach(p => p.isChoose = false);
         var charPlaying = characterInfos.Find(c => c.isPlaying);
         charPlaying.isPlayed = true;
         Debug.Log($"show anim typeFood: {typePlay}");
@@ -100,6 +103,8 @@ public class LevelOne : BaseLevel
         charToPLay.isPlaying = true;
         charPlaying.character.ShowAnimToBackIdle(charToPLay, (int)ItemAnimLevelOne.Idle);
         charToPLay.character.ShowAnimMoveToPlayIdle((int)ItemAnimLevelOne.Idle);
+        _twChoose?.Kill();
+        _twChoose = DOVirtual.DelayedCall(0.5f, () => pieceMoves.ForEach(p => p.isChoose = true));
         
     }
 

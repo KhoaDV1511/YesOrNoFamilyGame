@@ -5,6 +5,7 @@ using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class GamePlayMediator : MonoBehaviour
 {
@@ -39,9 +40,10 @@ public class GamePlayMediator : MonoBehaviour
 
     private void StartGame()
     {
+        txtLevel.SetText($"level {_gamePlayModle.currentLevel}");
         for (int i = 0; i < baseLevels.Length; i++)
         {
-            if (i == _gamePlayModle.Level - 1)
+            if (i == _gamePlayModle.currentLevel - 1)
             {
                 baseLevels[i].StartPlay();
                 progressPlay.ShowView();
@@ -57,7 +59,6 @@ public class GamePlayMediator : MonoBehaviour
                 baseLevels[i].Hide();
             }
         }
-        baseLevels[_gamePlayModle.Level - 1].StartPlay();
         bottom.Hide();
     }
     private void NexLevel()
@@ -76,5 +77,7 @@ public class GamePlayMediator : MonoBehaviour
     private void UpdateProgress(int progress, int total)
     {
         bottom.SetActive(progress >= total);
+        if(progress >= total)
+            _gamePlayModle.Level = _gamePlayModle.currentLevel + 1;
     }
 }

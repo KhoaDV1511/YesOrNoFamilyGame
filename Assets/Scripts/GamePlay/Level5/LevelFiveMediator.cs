@@ -1,4 +1,5 @@
 using System.Linq;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -9,6 +10,7 @@ public class LevelFiveMediator : BaseLevel
     private LevelFiveData levelFiveData => GlobalDataManager.Ins.levelFiveData;
     private bool _isChoose;
     private int _progress;
+    private Tween _twChoose;
     
     [Button]
     public override void StartPlay()
@@ -37,8 +39,8 @@ public class LevelFiveMediator : BaseLevel
         characterToPlaying.isPlaying = true;
         if (characterToPlaying != characterToWait)
         {
-            characterToPlaying.character.Cast<CharLevelThree>().SetSkeletonPlay((int)ItemAnimLevelOne.Idle);
-            characterToWait.character.Cast<CharLevelThree>().SetSkeletonWait((int)ItemAnimFive.Idle);  
+            characterToPlaying.character.Cast<CharLevelFive>().SetSkeletonPlay((int)ItemAnimLevelOne.Idle);
+            characterToWait.character.Cast<CharLevelFive>().SetSkeletonWait((int)ItemAnimFive.Idle);  
             characterToWait.character.AnimInitIdleWait(characterToPlaying, (int)ItemAnimLevelOne.Idle);
             characterToPlaying.character.AnimInitIdlePlay((int)ItemAnimFive.Idle);
         }
@@ -83,16 +85,17 @@ public class LevelFiveMediator : BaseLevel
             charToPLay = FindCharPlay();
         }
         charPlaying.isPlaying = false;
-        charPlaying.character.Cast<CharLevelThree>().SetSkeletonWait((int)ItemAnimLevelOne.Idle); 
+        charPlaying.character.Cast<CharLevelFive>().SetSkeletonWait((int)ItemAnimLevelOne.Idle); 
         charPlaying.character.ShowAnimToBackIdle(charToPLay, (int)ItemAnimLevelOne.Idle);
         objTable.Hide();
         charToPLay.isPlaying = true;
         charToPLay.character.ShowAnimMoveToPlayIdle((int)ItemAnimLevelOne.Idle, () =>
         {
-            charToPLay.character.Cast<CharLevelThree>().SetSkeletonPlay((int)ItemAnimFive.Idle);
+            charToPLay.character.Cast<CharLevelFive>().SetSkeletonPlay((int)ItemAnimFive.Idle);
             objTable.Show();
         });
-        _isChoose = true;
+        _twChoose?.Kill();
+        _twChoose = DOVirtual.DelayedCall(0.5f, () => _isChoose = true);
     }
 
     public override void UpdateProgress()

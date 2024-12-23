@@ -59,6 +59,7 @@ public class AdsManager : MonoSingleton<AdsManager>
     public void ShowAds(LevelPlayAdFormat levelPlayAdFormat, Action<bool, string> onRewardedAds = null)
     {
         var adsShow = _listAds.Find(a => a.levelPlayAdFormat == levelPlayAdFormat);
+        if(adsShow == null) return;
         if (adsShow.CanShowAds())
         {
             adsShow.ShowAds(onRewardedAds);

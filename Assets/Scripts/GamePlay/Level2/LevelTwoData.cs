@@ -24,6 +24,6 @@ public enum TypePlayTwoChoose
 
 public enum ItemAnimTwo
 {
-    CamO, CamThia, CamLaChuoi, CamHopKem, CamGio, CamChao, CamConCa, CamChan,
+    CamChan, CamChao, CamConCa, CamGio, CamHopKem, CamLaChuoi, CamO, CamThia,
     Idle, IdleNotBoxRight, IdleNotBoxLeft, IdleLose, IdleLoseKem, IdleWin
 }

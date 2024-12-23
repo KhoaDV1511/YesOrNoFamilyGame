@@ -19,6 +19,10 @@ public class HomeMediator : MonoBehaviour
     {
         btnTabPlay.onClick.AddListener(TabPlay);
         btnAds.onClick.AddListener(ShowAds);
+        btnSetting.onClick.AddListener(() =>
+        {
+            PopupManager.OpenPopup<SettingPopup>();
+        });
     }
 
     private void OnEnable()

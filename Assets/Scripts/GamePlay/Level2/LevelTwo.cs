@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 
 public class LevelTwo : BaseLevel, IPointerClickHandler
 {
-    [SerializeField] private SkeletonGraphic girlPouringWater;
+    [SerializeField] private SkeletonGraphic girlPouringWater, water;
     [SerializeField] private CharacterInfo charInPlay;
     private LevelTwoData levelTwoData => GlobalDataManager.Ins.levelTwoData;
     private float _posClick;
@@ -40,6 +40,11 @@ public class LevelTwo : BaseLevel, IPointerClickHandler
         {
             charPlaying.character.Cast<CharLevelTwo>().ChooseLeft(itemPlay.sprItem);
             charPlaying.character.SetAnimChar((int)ItemAnimTwo.IdleNotBoxLeft, true);
+        }
+        Debug.Log($"item choose: {itemPlay.typePlay}");
+        foreach (var a in itemPlay.itemAnim)
+        {
+            Debug.Log($"item choose play: {a}");
         }
         _isChoose = false;
         _twChoose?.Kill();
@@ -79,12 +84,14 @@ public class LevelTwo : BaseLevel, IPointerClickHandler
             characterToPlaying.character.AnimInitIdlePlay((int)ItemAnimTwo.Idle);
         }
         
+        girlPouringWater.transform.SetSiblingIndex(characterInfos.Count - 1);
         _isChoose = true;
         SetBoxItem();
     }
     public override void ShowAnimReceiveTypePlay(int typePlay)
     {
         var charPlaying = characterInfos.Find(c => c.isPlaying);
+        charPlaying.character.Cast<CharLevelTwo>().HideBox(); 
         charPlaying.isPlayed = true;
         Debug.Log($"show anim typeFood: {typePlay}");
         var itemAnimLevelOnes = levelTwoData.animPlayTwoInfos
@@ -95,7 +102,7 @@ public class LevelTwo : BaseLevel, IPointerClickHandler
     }
     private void GirlPouringWater()
     {
-        int[] itemAnimLevelOnes = { girlPouring, girlIdle, girlNotWater };
+        int[] itemAnimLevelOnes = { girlPouring, girlNotWater, girlIdle };
         _sqGirl?.Kill();
         _sqGirl = DOTween.Sequence();
         var time = 0f;
@@ -130,13 +137,13 @@ public class LevelTwo : BaseLevel, IPointerClickHandler
         }
         if(charToPLay == null) return;
         charPlaying.isPlaying = false;
-        charPlaying.character.Cast<CharLevelTwo>().SetSkeletonWait(); 
-        charPlaying.character.Cast<CharLevelTwo>().HideBox(); 
+        charPlaying.character.Cast<CharLevelTwo>().SetSkeletonWait();
         charPlaying.character.ShowAnimToBackIdle(charToPLay, (int)ItemAnimLevelOne.Idle);
         charToPLay.isPlaying = true;
         charToPLay.character.Cast<CharLevelTwo>().HideBox(); 
         charToPLay.character.ShowAnimMoveToPlayIdle((int)ItemAnimLevelOne.Idle, () => charToPLay.character.Cast<CharLevelTwo>().SetSkeletonPlay());
           
+        girlPouringWater.transform.SetSiblingIndex(characterInfos.Count - 1);
         _isChoose = true;
         SetBoxItem();
     }
@@ -144,17 +151,17 @@ public class LevelTwo : BaseLevel, IPointerClickHandler
     private void SetBoxItem()
     {
         _itemLeft = levelTwoData.animPlayTwoInfos.Where(c => !c.isChoose).ToList()[
-            Random.Range(0, characterInfos.Count(c => !c.isPlayed))];
+            Random.Range(0, levelTwoData.animPlayTwoInfos.Count(c => !c.isChoose))];
         _itemLeft.isChoose = true;
         if (_itemLeft.isWin)
         {
             _itemRight = levelTwoData.animPlayTwoInfos.Where(c => !c.isChoose && !c.isWin).ToList()[
-                Random.Range(0, characterInfos.Count(c => !c.isPlayed))];
+                Random.Range(0, levelTwoData.animPlayTwoInfos.Count(c => !c.isChoose && !c.isWin))];
         }
         else
         {
             _itemRight = levelTwoData.animPlayTwoInfos.Where(c => !c.isChoose && c.isWin).ToList()[
-                Random.Range(0, characterInfos.Count(c => !c.isPlayed))];
+                Random.Range(0, levelTwoData.animPlayTwoInfos.Count(c => !c.isChoose && c.isWin))];
         }
 
         _itemRight.isChoose = true;

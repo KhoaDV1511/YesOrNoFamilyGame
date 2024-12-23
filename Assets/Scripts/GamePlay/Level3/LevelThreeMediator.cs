@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using Sirenix.OdinInspector;
+using Sirenix.Utilities;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,6 +11,7 @@ public class LevelThreeMediator : BaseLevel
 {
     [SerializeField] private Bubble[] bubbles;
     private int _progress;
+    private Tween _twChoose;
     private LevelThreeData LevelThree => GlobalDataManager.Ins.levelThreeData;
     
     [Button]
@@ -66,6 +69,7 @@ public class LevelThreeMediator : BaseLevel
 
     public override void ShowAnimReceiveTypePlay(int typePlay)
     {
+        bubbles.ForEach(b => b.isChoose = false);
         var charPlaying = characterInfos.Find(c => c.isPlaying);
         charPlaying.isPlayed = true;
         Debug.Log($"show anim typeFood: {typePlay}");
@@ -92,6 +96,8 @@ public class LevelThreeMediator : BaseLevel
         charToPLay.isPlaying = true;
         charToPLay.character.Cast<CharLevelThree>().SetSkeletonPlay((int)ItemAnimThree.Idle); 
         charToPLay.character.ShowAnimMoveToPlayIdle((int)ItemAnimThree.Idle);
+        _twChoose?.Kill();
+        _twChoose = DOVirtual.DelayedCall(0.5f, () => bubbles.ForEach(p => p.isChoose = true));
     }
 
     public override void UpdateProgress()

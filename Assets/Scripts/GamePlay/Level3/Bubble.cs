@@ -14,6 +14,7 @@ public class Bubble : MonoBehaviour
     private Action<int> _poke;
     private Action<TypePlayThreeChoose> _animPoke;
     public TypePlayThreeChoose typePlayThreeChoose;
+    public bool isChoose;
 
     private void Start()
     {
@@ -22,6 +23,7 @@ public class Bubble : MonoBehaviour
 
     public void Init(Sprite sprItem, TypePlayThreeChoose type, Action<int> poke, Action<TypePlayThreeChoose> animPoke)
     {
+        isChoose = true;
         _poke = poke;
         _animPoke = animPoke;
         typePlayThreeChoose = type;
@@ -34,6 +36,7 @@ public class Bubble : MonoBehaviour
 
     private void Poke()
     {
+        if(!isChoose) return;
         _animPoke?.Invoke(typePlayThreeChoose);
         _twShowEffect?.Kill();
         _twShowEffect = DOVirtual.DelayedCall(0.6f, Effect);
