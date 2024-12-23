@@ -1,0 +1,166 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using com.unity3d.mediation;
+using UnityEngine;
+
+public class AdsManager : MonoSingleton<AdsManager>
+{
+    [SerializeField] private IronSourceADUnitIdConfig[] adUnitIdConfig = { };
+    private List<BaseAds> _listAds = new();
+
+    protected override void Start()
+    {
+        base.Start();
+        _listAds = GetComponentsInChildren<BaseAds>().ToList();
+        Initialize();
+    }
+    
+    private void OnEnable()
+    {
+        Signals.Get<LoadAdsSignal>().AddListener(ResultLoadAds);
+    }
+
+    private void OnDisable()
+    {
+        Signals.Get<LoadAdsSignal>().RemoveListener(ResultLoadAds);
+    }
+
+    private void ResultLoadAds(LevelPlayAdFormat levelPlayAdFormat, bool loadSuccess)
+    {
+        if (loadSuccess)
+        {
+            Signals.Get<ShowAdsSignal>().Dispatch(levelPlayAdFormat, true);
+        }
+        else
+        {
+            if (!CanShowAds(levelPlayAdFormat))
+            {
+                Debug.Log("All ads not available");
+                Signals.Get<ShowAdsSignal>().Dispatch(levelPlayAdFormat, false);
+            }
+            else
+            {
+                Signals.Get<ShowAdsSignal>().Dispatch(levelPlayAdFormat, true);
+            }
+        }
+    }
+
+    public bool CanShowAds(LevelPlayAdFormat levelPlayAdFormat)
+    {
+        return _listAds.Find(a => a.levelPlayAdFormat == levelPlayAdFormat).CanShowAds();
+    }
+
+    public void LoadAds(LevelPlayAdFormat levelPlayAdFormat)
+    {
+        _listAds.Find(a => a.levelPlayAdFormat == levelPlayAdFormat).LoadAds();
+    }
+
+    public void ShowAds(LevelPlayAdFormat levelPlayAdFormat, Action<bool, string> onRewardedAds = null)
+    {
+        var adsShow = _listAds.Find(a => a.levelPlayAdFormat == levelPlayAdFormat);
+        if (adsShow.CanShowAds())
+        {
+            adsShow.ShowAds(onRewardedAds);
+            return;
+        }
+        if(levelPlayAdFormat != LevelPlayAdFormat.BANNER)
+            LoadAndShowAds(levelPlayAdFormat);
+    }
+
+    public void HideBanner()
+    {
+        _listAds[(int)LevelPlayAdFormat.BANNER].HideAds();
+    }
+    private void LoadAndShowAds(LevelPlayAdFormat levelPlayAdFormat)
+    {
+        if (!CanShowAds(levelPlayAdFormat))
+        {
+            LoadAds(levelPlayAdFormat);
+        }
+    }
+
+    private void Initialize()
+    {
+        if (GameUtils.IsAndroid() || GameUtils.IsIOS())
+        {
+            Debug.Log("unity-script: IronSource.Agent.validateIntegration");
+            IronSource.Agent.validateIntegration();
+
+            Debug.Log("unity-script: unity version" + IronSource.unityVersion());
+
+            // SDK init
+            Debug.Log("unity-script: LevelPlay SDK initialization");
+            LevelPlay.Init(adUnitIdConfig[(int)LevelPlayAdFormat.REWARDED].ADUnitId ,adFormats:new []{LevelPlayAdFormat.REWARDED});
+        
+            LevelPlay.OnInitSuccess += SdkInitializationCompletedEvent;
+            LevelPlay.OnInitFailed += SdkInitializationFailedEvent;
+        }
+    }
+    void SdkInitializationCompletedEvent(LevelPlayConfiguration config)
+    {
+        Debug.Log("unity-script: I got SdkInitializationCompletedEvent with config: "+ config);
+        EnableAds();
+    }
+    
+    void SdkInitializationFailedEvent(LevelPlayInitError error)
+    {
+        Debug.Log("unity-script: I got SdkInitializationFailedEvent with error: "+ error);
+    }
+    void EnableAds()
+    {
+        //Add ImpressionSuccess Event
+        IronSourceEvents.onImpressionDataReadyEvent += ImpressionDataReadyEvent;
+
+        //Add AdInfo Rewarded Video Events
+        _listAds.Find(a => a.levelPlayAdFormat == LevelPlayAdFormat.REWARDED)
+            .Initialize(adUnitIdConfig.ToList().Find(a => a.levelPlayAdFormat == LevelPlayAdFormat.REWARDED));
+
+        // Register to Banner events
+        _listAds.Find(a => a.levelPlayAdFormat == LevelPlayAdFormat.BANNER)
+            .Initialize(adUnitIdConfig.ToList().Find(a => a.levelPlayAdFormat ==LevelPlayAdFormat.BANNER));
+
+        // Register to Interstitial events
+        _listAds.Find(a => a.levelPlayAdFormat == LevelPlayAdFormat.INTERSTITIAL)
+            .Initialize(adUnitIdConfig.ToList().Find(a => a.levelPlayAdFormat ==LevelPlayAdFormat.INTERSTITIAL));
+    }
+    void ImpressionDataReadyEvent(IronSourceImpressionData impressionData)
+    {
+        Debug.Log("unity - script: I got ImpressionDataReadyEvent ToString(): " + impressionData.ToString());
+        Debug.Log("unity - script: I got ImpressionDataReadyEvent allData: " + impressionData.allData);
+    }
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        IronSource.Agent.onApplicationPause(pauseStatus);
+    }
+}
+
+[Serializable]
+public class IronSourceADUnitIdConfig
+{
+    public LevelPlayAdFormat levelPlayAdFormat;
+    [SerializeField] private bool testMode = false;
+    [SerializeField] private string androidId = "";
+    [SerializeField] private string iosId = "";
+    [SerializeField] private string androidIdTest = "85460dcd";
+    [SerializeField] private string iOSIdTest = "8545d445";
+    
+    public string ADUnitId
+    {
+        get
+        {
+            switch (Application.platform)
+            {
+                case RuntimePlatform.Android:
+                    return testMode ? androidIdTest : androidId;
+                case RuntimePlatform.IPhonePlayer:
+                    return testMode ? iOSIdTest : iosId;
+            }
+
+            return "unexpected_platform";
+        }
+    }
+
+    public int maxCountReload = 3;
+    public float timeReloadAds = 5f;
+}
