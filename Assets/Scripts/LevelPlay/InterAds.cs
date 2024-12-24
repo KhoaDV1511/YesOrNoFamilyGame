@@ -10,7 +10,7 @@ public class InterAds : MonoBehaviour, BaseAds
     public int _currentReloadAds;
     public Action<bool, string> _onDoneAds;
 
-    public LevelPlayAdFormat levelPlayAdFormat => LevelPlayAdFormat.INTERSTITIAL;
+    public TypeAds levelPlayAdFormat => TypeAds.INTERSTITIAL;
     public bool CanShowAds()
     {
         return interstitialAd.IsAdReady();
@@ -68,7 +68,7 @@ public class InterAds : MonoBehaviour, BaseAds
     void InterstitialOnAdLoadedEvent(LevelPlayAdInfo adInfo)
     {
         Debug.Log("unity-script: I got InterstitialOnAdLoadedEvent With AdInfo " + adInfo);
-        Signals.Get<LoadAdsSignal>().Dispatch(LevelPlayAdFormat.INTERSTITIAL, true);
+        Signals.Get<LoadAdsSignal>().Dispatch(TypeAds.INTERSTITIAL, true);
     }
 
     void InterstitialOnAdLoadFailedEvent(LevelPlayAdError error)
@@ -120,7 +120,7 @@ public class InterAds : MonoBehaviour, BaseAds
         else
         {
             Debug.Log("ironsource: try to retry load ads but ads not available");
-            Signals.Get<LoadAdsSignal>().Dispatch(LevelPlayAdFormat.INTERSTITIAL, false);
+            Signals.Get<LoadAdsSignal>().Dispatch(TypeAds.INTERSTITIAL, false);
         }
     }
 }

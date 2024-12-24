@@ -1,9 +1,8 @@
 ﻿using System;
-using com.unity3d.mediation;
 
 public interface BaseAds
 {
-    LevelPlayAdFormat levelPlayAdFormat { get; }
+    TypeAds levelPlayAdFormat { get; }
     bool CanShowAds();
     void LoadAds();
     void HideAds();

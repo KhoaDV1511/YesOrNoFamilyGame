@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BannerAds : MonoBehaviour, BaseAds
 {
-    public LevelPlayAdFormat levelPlayAdFormat => LevelPlayAdFormat.BANNER;
+    public TypeAds levelPlayAdFormat => TypeAds.BANNER;
     private IronSourceADUnitIdConfig ironSourceConfig;
     private LevelPlayBannerAd bannerAd;
     public bool CanShowAds()

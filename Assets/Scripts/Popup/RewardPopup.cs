@@ -1,4 +1,3 @@
-using com.unity3d.mediation;
 using DG.Tweening;
 using Spine.Unity;
 using TMPro;
@@ -38,7 +37,7 @@ public class RewardPopup : BaseUIPopup
     }
     public void ShowView()
     {
-        _adsAvailable = AdsManager.Instance.CanShowAds(LevelPlayAdFormat.REWARDED);
+        _adsAvailable = AdsManager.Instance.CanShowAds(TypeAds.REWARDED);
         txtReward.SetText($"+{GamePlayModle.coinReward}");
         skeletonReward.SetAnimSkeleton(rewardIdle, true);
     }
@@ -50,7 +49,7 @@ public class RewardPopup : BaseUIPopup
         if (_adsAvailable)
         {
             _adsAvailable = false;
-            AdsManager.Instance.ShowAds(LevelPlayAdFormat.REWARDED, (b, placement) =>
+            AdsManager.Instance.ShowAds(TypeAds.REWARDED, (b, placement) =>
             {
                 if (b)
                 {
@@ -66,7 +65,7 @@ public class RewardPopup : BaseUIPopup
         }
     }
     
-    private void ResultShowAds(LevelPlayAdFormat levelPlayAdFormat, bool isSuccess)
+    private void ResultShowAds(bool isSuccess)
     {
         if (isSuccess)
         {
@@ -74,10 +73,10 @@ public class RewardPopup : BaseUIPopup
         }
         else
         {
-            OnRetryLoadAdsFail(levelPlayAdFormat);
+            OnRetryLoadAdsFail();
         }
     }
-    private void OnRetryLoadAdsFail(LevelPlayAdFormat levelPlayAdFormat)
+    private void OnRetryLoadAdsFail()
     {
         _adsAvailable = false;
         if(!gameObject.activeSelf) return;

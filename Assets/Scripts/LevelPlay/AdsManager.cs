@@ -26,37 +26,37 @@ public class AdsManager : MonoSingleton<AdsManager>
         Signals.Get<LoadAdsSignal>().RemoveListener(ResultLoadAds);
     }
 
-    private void ResultLoadAds(LevelPlayAdFormat levelPlayAdFormat, bool loadSuccess)
+    private void ResultLoadAds(TypeAds levelPlayAdFormat, bool loadSuccess)
     {
         if (loadSuccess)
         {
-            Signals.Get<ShowAdsSignal>().Dispatch(levelPlayAdFormat, true);
+            Signals.Get<ShowAdsSignal>().Dispatch(true);
         }
         else
         {
             if (!CanShowAds(levelPlayAdFormat))
             {
                 Debug.Log("All ads not available");
-                Signals.Get<ShowAdsSignal>().Dispatch(levelPlayAdFormat, false);
+                Signals.Get<ShowAdsSignal>().Dispatch(false);
             }
             else
             {
-                Signals.Get<ShowAdsSignal>().Dispatch(levelPlayAdFormat, true);
+                Signals.Get<ShowAdsSignal>().Dispatch(true);
             }
         }
     }
 
-    public bool CanShowAds(LevelPlayAdFormat levelPlayAdFormat)
+    public bool CanShowAds(TypeAds levelPlayAdFormat)
     {
         return _listAds.Find(a => a.levelPlayAdFormat == levelPlayAdFormat).CanShowAds();
     }
 
-    public void LoadAds(LevelPlayAdFormat levelPlayAdFormat)
+    public void LoadAds(TypeAds levelPlayAdFormat)
     {
         _listAds.Find(a => a.levelPlayAdFormat == levelPlayAdFormat).LoadAds();
     }
 
-    public void ShowAds(LevelPlayAdFormat levelPlayAdFormat, Action<bool, string> onRewardedAds = null)
+    public void ShowAds(TypeAds levelPlayAdFormat, Action<bool, string> onRewardedAds = null)
     {
         var adsShow = _listAds.Find(a => a.levelPlayAdFormat == levelPlayAdFormat);
         if(adsShow == null) return;
@@ -65,15 +65,15 @@ public class AdsManager : MonoSingleton<AdsManager>
             adsShow.ShowAds(onRewardedAds);
             return;
         }
-        if(levelPlayAdFormat != LevelPlayAdFormat.BANNER)
+        if(levelPlayAdFormat != TypeAds.BANNER)
             LoadAndShowAds(levelPlayAdFormat);
     }
 
     public void HideBanner()
     {
-        _listAds[(int)LevelPlayAdFormat.BANNER].HideAds();
+        _listAds[(int)TypeAds.BANNER].HideAds();
     }
-    private void LoadAndShowAds(LevelPlayAdFormat levelPlayAdFormat)
+    private void LoadAndShowAds(TypeAds levelPlayAdFormat)
     {
         if (!CanShowAds(levelPlayAdFormat))
         {
@@ -114,16 +114,16 @@ public class AdsManager : MonoSingleton<AdsManager>
         IronSourceEvents.onImpressionDataReadyEvent += ImpressionDataReadyEvent;
 
         //Add AdInfo Rewarded Video Events
-        _listAds.Find(a => a.levelPlayAdFormat == LevelPlayAdFormat.REWARDED)
-            .Initialize(adUnitIdConfig.ToList().Find(a => a.levelPlayAdFormat == LevelPlayAdFormat.REWARDED));
+        _listAds.Find(a => a.levelPlayAdFormat == TypeAds.REWARDED)
+            .Initialize(adUnitIdConfig.ToList().Find(a => a.levelPlayAdFormat == TypeAds.REWARDED));
 
         // Register to Banner events
-        _listAds.Find(a => a.levelPlayAdFormat == LevelPlayAdFormat.BANNER)
-            .Initialize(adUnitIdConfig.ToList().Find(a => a.levelPlayAdFormat ==LevelPlayAdFormat.BANNER));
+        _listAds.Find(a => a.levelPlayAdFormat == TypeAds.BANNER)
+            .Initialize(adUnitIdConfig.ToList().Find(a => a.levelPlayAdFormat ==TypeAds.BANNER));
 
         // Register to Interstitial events
-        _listAds.Find(a => a.levelPlayAdFormat == LevelPlayAdFormat.INTERSTITIAL)
-            .Initialize(adUnitIdConfig.ToList().Find(a => a.levelPlayAdFormat ==LevelPlayAdFormat.INTERSTITIAL));
+        _listAds.Find(a => a.levelPlayAdFormat == TypeAds.INTERSTITIAL)
+            .Initialize(adUnitIdConfig.ToList().Find(a => a.levelPlayAdFormat ==TypeAds.INTERSTITIAL));
     }
     void ImpressionDataReadyEvent(IronSourceImpressionData impressionData)
     {
@@ -139,7 +139,7 @@ public class AdsManager : MonoSingleton<AdsManager>
 [Serializable]
 public class IronSourceADUnitIdConfig
 {
-    public LevelPlayAdFormat levelPlayAdFormat;
+    public TypeAds levelPlayAdFormat;
     [SerializeField] private bool testMode = false;
     [SerializeField] private string androidId = "";
     [SerializeField] private string iosId = "";
@@ -164,4 +164,10 @@ public class IronSourceADUnitIdConfig
 
     public int maxCountReload = 3;
     public float timeReloadAds = 5f;
+}
+public enum TypeAds
+{
+    BANNER,
+    INTERSTITIAL,
+    REWARDED
 }

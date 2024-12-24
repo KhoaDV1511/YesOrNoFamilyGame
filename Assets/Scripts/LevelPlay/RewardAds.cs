@@ -1,5 +1,4 @@
 ﻿using System;
-using com.unity3d.mediation;
 using DG.Tweening;
 using UnityEngine;
 
@@ -57,7 +56,7 @@ public class RewardAds : MonoBehaviour, BaseAds
         {
             _currentReloadAds = 0;
             _isOnLoadAds = false;
-            Signals.Get<LoadAdsSignal>().Dispatch(LevelPlayAdFormat.REWARDED, true);
+            Signals.Get<LoadAdsSignal>().Dispatch(TypeAds.REWARDED, true);
             Debug.Log("ironsource: ads available");
         });
     }
@@ -111,7 +110,7 @@ public class RewardAds : MonoBehaviour, BaseAds
 
     #endregion
 
-    public LevelPlayAdFormat levelPlayAdFormat => LevelPlayAdFormat.REWARDED;
+    public TypeAds levelPlayAdFormat => TypeAds.REWARDED;
 
     public bool CanShowAds()
     {
@@ -167,7 +166,7 @@ public class RewardAds : MonoBehaviour, BaseAds
         else
         {
             Debug.Log("ironsource: try to retry load ads but ads not available");
-            Signals.Get<LoadAdsSignal>().Dispatch(LevelPlayAdFormat.REWARDED, false);
+            Signals.Get<LoadAdsSignal>().Dispatch(TypeAds.REWARDED, false);
         }
     }
 }

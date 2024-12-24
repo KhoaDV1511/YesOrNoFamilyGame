@@ -13,6 +13,7 @@ public class ProgressPlay : MonoBehaviour
         if (_gamePlayModle.Level >= GamePlayModle.levelMax)
         {
             imgFill.fillAmount = 1f;
+            ShowInter();
         }
 
         if (_gamePlayModle.Level <= GamePlayModle.levelMax - 1)
@@ -29,5 +30,16 @@ public class ProgressPlay : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void ShowInter()
+    {
+        AdsManager.Instance.ShowAds(TypeAds.INTERSTITIAL, (b, placement) =>
+        {
+            if (b)
+            {
+                Debug.Log("show reward");
+            }
+        });
     }
 }

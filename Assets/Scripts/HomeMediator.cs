@@ -1,5 +1,5 @@
 using System;
-using com.unity3d.mediation;
+
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -12,7 +12,7 @@ public class HomeMediator : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtLevel, txtMoney;
     [SerializeField] private GameObject bg;
     private readonly ShowAdsSignal _showAdsSignal = Signals.Get<ShowAdsSignal>();
-    private bool _adsAvailable, _adsAvailableInter;
+    private bool _adsAvailable;
     private GamePlayModle _gamePlayModle = GamePlayModle.Instance;
 
     private void Start()
@@ -22,6 +22,10 @@ public class HomeMediator : MonoBehaviour
         btnSetting.onClick.AddListener(() =>
         {
             PopupManager.OpenPopup<SettingPopup>();
+        });
+        btnCoin.onClick.AddListener(() =>
+        {
+            PopupManager.OpenPopup<ShopPopup>();
         });
     }
 
@@ -45,12 +49,12 @@ public class HomeMediator : MonoBehaviour
     }
     private void ShowAds()
     {
-        _adsAvailable = AdsManager.Instance.CanShowAds(LevelPlayAdFormat.REWARDED);
+        _adsAvailable = AdsManager.Instance.CanShowAds(TypeAds.REWARDED);
         Debug.Log($"is ads reward available: {_adsAvailable}");
         if (_adsAvailable)
         {
             _adsAvailable = false;
-            AdsManager.Instance.ShowAds(LevelPlayAdFormat.REWARDED, (b, placement) =>
+            AdsManager.Instance.ShowAds(TypeAds.REWARDED, (b, placement) =>
             {
                 if (b)
                 {
@@ -65,8 +69,8 @@ public class HomeMediator : MonoBehaviour
     }
     private void ShowAdsInter()
     {
-        Debug.Log($"is ads Inter available: {AdsManager.Instance.CanShowAds(LevelPlayAdFormat.INTERSTITIAL)}");
-        AdsManager.Instance.ShowAds(LevelPlayAdFormat.INTERSTITIAL, (b, placement) =>
+        Debug.Log($"is ads Inter available: {AdsManager.Instance.CanShowAds(TypeAds.INTERSTITIAL)}");
+        AdsManager.Instance.ShowAds(TypeAds.INTERSTITIAL, (b, placement) =>
         {
             if (b)
             {
@@ -77,7 +81,7 @@ public class HomeMediator : MonoBehaviour
 
     private void ShowBanner()
     {
-        AdsManager.Instance.ShowAds(LevelPlayAdFormat.BANNER);
+        AdsManager.Instance.ShowAds(TypeAds.BANNER);
     }
     
     private void HideBanner()
@@ -85,38 +89,22 @@ public class HomeMediator : MonoBehaviour
         AdsManager.Instance.HideBanner();
     }
     
-    private void ResultShowAds(LevelPlayAdFormat levelPlayAdFormat, bool isSuccess)
+    private void ResultShowAds(bool isSuccess)
     {
         if (isSuccess)
         {
-            switch (levelPlayAdFormat)
-            {
-                case LevelPlayAdFormat.REWARDED:
-                    _adsAvailable = true;
-                    break;
-                case LevelPlayAdFormat.INTERSTITIAL:
-                    _adsAvailableInter = true;
-                    break;
-            }
+            _adsAvailable = true;
         }
         else
         {
-            OnRetryLoadAdsFail(levelPlayAdFormat);
+            OnRetryLoadAdsFail();
         }
     }
 
 
-    private void OnRetryLoadAdsFail(LevelPlayAdFormat levelPlayAdFormat)
+    private void OnRetryLoadAdsFail()
     {
-        switch (levelPlayAdFormat)
-        {
-            case LevelPlayAdFormat.REWARDED:
-                _adsAvailable = false;
-                break;
-            case LevelPlayAdFormat.INTERSTITIAL:
-                _adsAvailableInter = false;
-                break;
-        }
+        _adsAvailable = false;
 
         if(!gameObject.activeSelf) return;
 
