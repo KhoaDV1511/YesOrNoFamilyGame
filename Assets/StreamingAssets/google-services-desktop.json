@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "229188831995",
+    "project_id": "chanhoi2024",
+    "storage_bucket": "chanhoi2024.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:229188831995:android:511b918f7335d7deea3e5e",
+        "android_client_info": {
+          "package_name": "chan.hoi.online"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYvQQN8foTgpC8pw8pKXNzU60dlQ3527E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
