@@ -1,30 +1,23 @@
 using DG.Tweening;
-using Sirenix.OdinInspector;
 using Spine.Unity;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RewardPopup : BaseUIPopup
+public class RewardUnlock : BaseUIPopup
 {
     [SerializeField] private SkeletonGraphic skeletonReward;
-    [SerializeField] private Button btnNextLevel, btnCollectReward;
-    [SerializeField] private RectTransform rectArrow;
+    [SerializeField] private Button btnCollectReward;
     [SerializeField] private TextMeshProUGUI txtReward;
     private readonly ShowAdsSignal _showAdsSignal = Signals.Get<ShowAdsSignal>();
     private bool _adsAvailable;
     private Sequence _sqArrow;
     private const int rewardIdle = 0, rewardUnBox = 1;
-    private int _nReward;
+    private int _nReward = 3;
 
     protected override void Start()
     {
         base.Start();
-        btnNextLevel.onClick.AddListener(() =>
-        {
-            Signals.Get<StartGameSignals>().Dispatch();
-            OnClose();
-        });
         btnCollectReward.onClick.AddListener(CollectReward);
     }
     private void OnEnable()
@@ -39,9 +32,9 @@ public class RewardPopup : BaseUIPopup
     public void ShowView()
     {
         _adsAvailable = AdsManager.Instance.CanShowAds(TypeAds.REWARDED);
-        txtReward.SetText($"+{GamePlayModle.coinRewardLeveComplete}");
+        txtReward.SetText($"+{GamePlayModle.coinRewardUnlock}");
         skeletonReward.SetAnimSkeleton(rewardIdle, true);
-        GamePlayModle.Instance.Coin += GamePlayModle.coinRewardLeveComplete;
+        GamePlayModle.Instance.Coin += GamePlayModle.coinRewardUnlock;
     }
 
     private void CollectReward()
@@ -57,7 +50,7 @@ public class RewardPopup : BaseUIPopup
                 {
                     Debug.Log("show reward");
                     skeletonReward.SetAnimSkeleton(rewardUnBox, false);
-                    GamePlayModle.Instance.Coin += _nReward * GamePlayModle.coinRewardLeveComplete;
+                    GamePlayModle.Instance.Coin += _nReward * GamePlayModle.coinRewardUnlock;
                 }
             });
         }

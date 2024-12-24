@@ -33,12 +33,14 @@ public class HomeMediator : MonoBehaviour
     {
         UpdateHome();
         Signals.Get<UpDateHomeSignals>().AddListener(UpdateHome);
+        Signals.Get<UpdateCoinSignal>().AddListener(UpdateCoin);
         _showAdsSignal.AddListener(ResultShowAds);
     }
 
     private void OnDisable()
     {
         Signals.Get<UpDateHomeSignals>().RemoveListener(UpdateHome);
+        Signals.Get<UpdateCoinSignal>().RemoveListener(UpdateCoin);
         _showAdsSignal.RemoveListener(ResultShowAds);
     }
 
@@ -46,6 +48,19 @@ public class HomeMediator : MonoBehaviour
     private void ShowToast()
     {
         Toast.Show("hom nay la ngayf toet voi");
+    }
+    [Button]
+    private void ShowUnlockReward()
+    {
+        PopupManager.OpenPopup<RewardUnlock>(p =>
+        {
+            p.ShowView();
+        });
+    }
+
+    private void UpdateCoin()
+    {
+        txtMoney.SetText(_gamePlayModle.Coin.ToString());
     }
     private void ShowAds()
     {

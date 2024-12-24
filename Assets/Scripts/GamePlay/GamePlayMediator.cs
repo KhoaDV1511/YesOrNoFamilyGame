@@ -70,7 +70,6 @@ public class GamePlayMediator : MonoBehaviour
             PopupManager.OpenPopup<RewardPopup>(p =>
             {
                 p.ShowView();
-                _gamePlayModle.Coin += GamePlayModle.coinReward;
             });
         });
     }

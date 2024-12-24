@@ -48,12 +48,15 @@ public class AdsManager : MonoSingleton<AdsManager>
 
     public bool CanShowAds(TypeAds levelPlayAdFormat)
     {
-        return _listAds.Find(a => a.levelPlayAdFormat == levelPlayAdFormat).CanShowAds();
+        var ads = _listAds.Find(a => a.levelPlayAdFormat == levelPlayAdFormat);
+        return ads?.CanShowAds() ?? false;
     }
 
     public void LoadAds(TypeAds levelPlayAdFormat)
     {
-        _listAds.Find(a => a.levelPlayAdFormat == levelPlayAdFormat).LoadAds();
+        var ads = _listAds.Find(a => a.levelPlayAdFormat == levelPlayAdFormat);
+        if(ads != null)
+            _listAds.Find(a => a.levelPlayAdFormat == levelPlayAdFormat).LoadAds();
     }
 
     public void ShowAds(TypeAds levelPlayAdFormat, Action<bool, string> onRewardedAds = null)
@@ -71,7 +74,8 @@ public class AdsManager : MonoSingleton<AdsManager>
 
     public void HideBanner()
     {
-        _listAds[(int)TypeAds.BANNER].HideAds();
+        var adsShow = _listAds.Find(a => a.levelPlayAdFormat == TypeAds.BANNER);
+        adsShow?.HideAds();
     }
     private void LoadAndShowAds(TypeAds levelPlayAdFormat)
     {

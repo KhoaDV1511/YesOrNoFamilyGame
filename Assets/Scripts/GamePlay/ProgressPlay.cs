@@ -9,14 +9,15 @@ public class ProgressPlay : MonoBehaviour
 
     public void ShowView()
     {
-        imgFill.fillAmount = (float)(Mathf.Max(0, _gamePlayModle.Level - 1)) / GamePlayModle.levelMax;
-        if (_gamePlayModle.Level >= GamePlayModle.levelMax)
+        var fillAmount = (float)(Mathf.Max(0, _gamePlayModle.Level - 1)) / (GamePlayModle.levelSix - 1);
+        imgFill.fillAmount = fillAmount;
+        if (_gamePlayModle.Level >= GamePlayModle.levelSix)
         {
             imgFill.fillAmount = 1f;
             ShowInter();
         }
 
-        if (_gamePlayModle.Level <= GamePlayModle.levelMax - 1)
+        if (_gamePlayModle.Level <= GamePlayModle.levelSix - 1)
         {
             for (int i = 0; i < mileProgress.Length; i++)
             {
@@ -39,6 +40,10 @@ public class ProgressPlay : MonoBehaviour
             if (b)
             {
                 Debug.Log("show reward");
+                PopupManager.OpenPopup<RewardUnlock>(p =>
+                {
+                    p.ShowView();
+                });
             }
         });
     }
