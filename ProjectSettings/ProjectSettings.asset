@@ -163,6 +163,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.DefaultCompany.YesOrNoFamilyGame
     Standalone: com.DefaultCompany.2DProject
+    iPhone: com.DefaultCompany.YesOrNoFamilyGame
   buildNumber:
     Standalone: 0
     VisionOS: 0
