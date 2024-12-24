@@ -25,7 +25,7 @@ public class HomeMediator : MonoBehaviour
         });
         btnCoin.onClick.AddListener(() =>
         {
-            PopupManager.OpenPopup<ShopPopup>();
+            PopupManager.OpenPopup<ShopPopupp>();
         });
     }
 

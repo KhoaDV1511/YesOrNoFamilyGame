@@ -9655,6 +9655,7 @@ GameObject:
   - component: {fileID: 804752340}
   - component: {fileID: 804752339}
   - component: {fileID: 804752341}
+  - component: {fileID: 804752342}
   m_Layer: 5
   m_Name: ShopPopup
   m_TagString: Untagged
@@ -9728,6 +9729,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   btnClose: {fileID: 0}
   btnBgClose: {fileID: 1437388886}
+--- !u!114 &804752342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804752336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8614b85aef24922ae5741e81b7346bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &806774385
 GameObject:
   m_ObjectHideFlags: 0
@@ -18356,6 +18369,7 @@ MonoBehaviour:
   levelFiveData: {fileID: 11400000, guid: 5ae6f26e2baba8242a2237025b5705f7, type: 2}
   flashPanel: {fileID: 6378615441010699149, guid: 9616165e3911dc945b6d993b43e2a21c, type: 3}
   toastGo: {fileID: 7737695533019665454, guid: f366cff34482547288b0069cb85e2916, type: 3}
+  storeData: {fileID: 0}
 --- !u!114 &1448686006
 MonoBehaviour:
   m_ObjectHideFlags: 0

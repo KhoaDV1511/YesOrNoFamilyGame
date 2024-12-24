@@ -29,4 +29,5 @@ public class GlobalDataManager : MonoBehaviour
     public LevelFiveData levelFiveData;
     public FlashPanel flashPanel;
     public Toast toastGo;
+    public StoreData storeData;
 }
