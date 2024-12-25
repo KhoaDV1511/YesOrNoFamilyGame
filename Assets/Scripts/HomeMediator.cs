@@ -11,7 +11,7 @@ public class HomeMediator : MonoBehaviour
     [SerializeField] private Button btnTabPlay, btnAds, btnCoin, btnSetting;
     [SerializeField] private TextMeshProUGUI txtLevel, txtMoney;
     [SerializeField] private GameObject bg;
-    private readonly ShowAdsSignal _showAdsSignal = Signals.Get<ShowAdsSignal>();
+    private readonly ShowAdsRewardSignal _showAdsRewardSignal = Signals.Get<ShowAdsRewardSignal>();
     private bool _adsAvailable;
     private GamePlayModle _gamePlayModle = GamePlayModle.Instance;
 
@@ -34,14 +34,14 @@ public class HomeMediator : MonoBehaviour
         UpdateHome();
         Signals.Get<UpDateHomeSignals>().AddListener(UpdateHome);
         Signals.Get<UpdateCoinSignal>().AddListener(UpdateCoin);
-        _showAdsSignal.AddListener(ResultShowAds);
+        _showAdsRewardSignal.AddListener(ResultShowAds);
     }
 
     private void OnDisable()
     {
         Signals.Get<UpDateHomeSignals>().RemoveListener(UpdateHome);
         Signals.Get<UpdateCoinSignal>().RemoveListener(UpdateCoin);
-        _showAdsSignal.RemoveListener(ResultShowAds);
+        _showAdsRewardSignal.RemoveListener(ResultShowAds);
     }
 
     [Button]

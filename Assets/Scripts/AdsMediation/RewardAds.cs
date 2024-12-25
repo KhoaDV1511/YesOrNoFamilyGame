@@ -56,7 +56,7 @@ public class RewardAds : MonoBehaviour, BaseAds
         {
             _currentReloadAds = 0;
             _isOnLoadAds = false;
-            Signals.Get<LoadAdsSignal>().Dispatch(TypeAds.REWARDED, true);
+            Signals.Get<LoadAdsRewardSignal>().Dispatch(true);
             Debug.Log("ironsource: ads available");
         });
     }
@@ -166,7 +166,7 @@ public class RewardAds : MonoBehaviour, BaseAds
         else
         {
             Debug.Log("ironsource: try to retry load ads but ads not available");
-            Signals.Get<LoadAdsSignal>().Dispatch(TypeAds.REWARDED, false);
+            Signals.Get<LoadAdsRewardSignal>().Dispatch(false);
         }
     }
 }

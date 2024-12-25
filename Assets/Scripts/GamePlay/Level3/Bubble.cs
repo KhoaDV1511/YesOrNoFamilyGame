@@ -21,16 +21,14 @@ public class Bubble : MonoBehaviour
         btnBubble.onClick.AddListener(Poke);
     }
 
-    public void Init(Sprite sprItem, TypePlayThreeChoose type, Action<int> poke, Action<TypePlayThreeChoose> animPoke)
+    public void Init( Action<int> poke, Action<TypePlayThreeChoose> animPoke)
     {
         isChoose = true;
         _poke = poke;
         _animPoke = animPoke;
-        typePlayThreeChoose = type;
         imgBubble.Show();
         imgBubble.Show();
         effectBubble.Hide();
-        imgItem.sprite = sprItem;
         imgItem.Hide();
     }
 
@@ -60,6 +58,7 @@ public class Bubble : MonoBehaviour
                 _twTimeShowItem?.Kill();
                 _twTimeShowItem = DOVirtual.DelayedCall(2.667f, imgItem.Hide);
                 imgItem.Show();
+                imgItem.SetNativeSize();
                 _poke?.Invoke((int)typePlayThreeChoose);
             });
     }

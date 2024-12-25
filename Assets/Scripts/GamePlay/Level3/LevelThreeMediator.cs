@@ -25,19 +25,9 @@ public class LevelThreeMediator : BaseLevel
 
     private void InitBubble()
     {
-        var typeItemSet = new List<TypePlayThreeChoose>();                                                              
-        var typeItem = new List<TypePlayThreeChoose>();                                                                    
-        foreach (var tp in Enum.GetValues(typeof(TypePlayThreeChoose)))                                                 
-        {                                                                                                    
-            typeItem.Add((TypePlayThreeChoose)tp);                                                                     
-        }                                                                                                    
         foreach (var p in bubbles)                                                                        
-        {                                                                                                    
-            var typeFood = Random.Range(0, typeItem.Count(t => !typeItemSet.Contains(t)));        
-            var typePlayThreeChoose = typeItem.Where(t => !typeItemSet.Contains(t)).ToList()[typeFood];
-            var spr = LevelThree.animPlayThreeInfos[(int)typePlayThreeChoose].sprItem;
-            p.Init(spr ,typePlayThreeChoose, ShowAnimReceiveTypePlay, ShowAnimPoke);
-            typeItemSet.Add(p.typePlayThreeChoose);                                                                       
+        {                                                                                                          
+            p.Init(ShowAnimReceiveTypePlay, ShowAnimPoke);                                                                      
         }   
     }
 

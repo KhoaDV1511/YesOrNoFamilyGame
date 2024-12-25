@@ -7,7 +7,7 @@ public class ItemPotato : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI txtQuantity, txtPriceMoney, txtPriceAds;
     [SerializeField] private Button btnBuy;
-    private readonly ShowAdsSignal _showAdsSignal = Signals.Get<ShowAdsSignal>();
+    private readonly ShowAdsRewardSignal _showAdsRewardSignal = Signals.Get<ShowAdsRewardSignal>();
     private ProductInfo _productInfo;
     private Action<ProductInfo> _buy;
 
@@ -18,12 +18,12 @@ public class ItemPotato : MonoBehaviour
     
     private void OnEnable()
     {
-        _showAdsSignal.AddListener(ResultShowAds);
+        _showAdsRewardSignal.AddListener(ResultShowAds);
     }
 
     private void OnDisable()
     {
-        _showAdsSignal.RemoveListener(ResultShowAds);
+        _showAdsRewardSignal.RemoveListener(ResultShowAds);
     }
     
     private void ResultShowAds(bool isSuccess)

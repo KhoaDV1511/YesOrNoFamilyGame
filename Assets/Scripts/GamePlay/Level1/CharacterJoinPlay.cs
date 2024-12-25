@@ -113,6 +113,9 @@ public class CharacterJoinPlay : MonoBehaviour
     public void SetSkeleton(SkeletonDataAsset skeletonDataAsset, int indexAnim, bool loop)
     {
         skeleton.skeletonDataAsset = skeletonDataAsset;
-        SetAnimChar(indexAnim, loop);
+        skeleton.Initialize(true);
+        indexAnim = indexAnim >= skeleton.SkeletonData.Animations.Items.Length ? 0 : indexAnim;
+        var animName = skeleton.SkeletonData.Animations.Items[indexAnim].Name;
+        skeleton.AnimationState.SetAnimation(0, animName, loop);
     }
 }

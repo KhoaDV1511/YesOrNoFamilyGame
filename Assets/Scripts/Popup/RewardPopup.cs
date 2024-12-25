@@ -11,7 +11,7 @@ public class RewardPopup : BaseUIPopup
     [SerializeField] private Button btnNextLevel, btnCollectReward;
     [SerializeField] private RectTransform rectArrow;
     [SerializeField] private TextMeshProUGUI txtReward;
-    private readonly ShowAdsSignal _showAdsSignal = Signals.Get<ShowAdsSignal>();
+    private readonly ShowAdsRewardSignal _showAdsRewardSignal = Signals.Get<ShowAdsRewardSignal>();
     private bool _adsAvailable;
     private Sequence _sqArrow;
     private const int rewardIdle = 0, rewardUnBox = 1;
@@ -29,12 +29,12 @@ public class RewardPopup : BaseUIPopup
     }
     private void OnEnable()
     {
-        _showAdsSignal.AddListener(ResultShowAds);
+        _showAdsRewardSignal.AddListener(ResultShowAds);
     }
 
     private void OnDisable()
     {
-        _showAdsSignal.RemoveListener(ResultShowAds);
+        _showAdsRewardSignal.RemoveListener(ResultShowAds);
     }
     public void ShowView()
     {

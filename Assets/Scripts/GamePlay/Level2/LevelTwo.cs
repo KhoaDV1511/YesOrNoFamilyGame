@@ -116,6 +116,12 @@ public class LevelTwo : BaseLevel, IPointerClickHandler
                 {
                     Debug.Log($"show anim receive food: {item[itemAnimLevelOnes[i1]].Duration}-{time1}-{item[(int)itemAnimLevelOnes[i1]].Name}");
                     SetAnimChar(itemAnimLevelOnes[i1], false);
+                    water.gameObject.SetActive(i1 == girlPouring);
+                    if (i1 == girlPouring)
+                    {
+                        water.transform.SetAsLastSibling();
+                        water.SetAnimSkeleton(0, true);
+                    }
                 });
             time = item[(int)itemAnimLevelOnes[i1]].Duration;
         }

@@ -284,7 +284,7 @@ MonoBehaviour:
   imgItem: {fileID: 1654474757}
   effectBubble: {fileID: 2116241067}
   btnBubble: {fileID: 1856921608}
-  typePlayThreeChoose: 0
+  typePlayThreeChoose: 4
   isChoose: 0
 --- !u!1 &24482196
 GameObject:
@@ -738,7 +738,7 @@ MonoBehaviour:
     isPlayed: 0
     isPlaying: 0
   girlPouringWater: {fileID: 1097659442}
-  water: {fileID: 0}
+  water: {fileID: 673445053}
   charInPlay:
     character: {fileID: 657889327}
     isPlayed: 0
@@ -2018,7 +2018,7 @@ MonoBehaviour:
   imgItem: {fileID: 1125049338}
   effectBubble: {fileID: 1076371464}
   btnBubble: {fileID: 583800740}
-  typePlayThreeChoose: 0
+  typePlayThreeChoose: 2
   isChoose: 0
 --- !u!1 &136896130
 GameObject:
@@ -3664,7 +3664,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c810475f38d8c2f4eae917e671a9ed4d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 090186d28700b194dbb1abd5c505cfa6, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -5407,7 +5407,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c810475f38d8c2f4eae917e671a9ed4d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 95eecb814ccc78142a38a796315ab3e2, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -7373,6 +7373,7 @@ RectTransform:
   - {fileID: 608977693}
   - {fileID: 1097659440}
   - {fileID: 657889323}
+  - {fileID: 673445052}
   m_Father: {fileID: 39200857}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -8378,16 +8379,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 673445051}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -17280}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1097659440}
+  m_Father: {fileID: 616394093}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -58.41666, y: -94}
+  m_AnchoredPosition: {x: 0, y: 152.01843}
   m_SizeDelta: {x: 891, y: 1529.01}
   m_Pivot: {x: 0.47520763, y: 0.8551219}
 --- !u!114 &673445053
@@ -13589,13 +13590,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: -17280}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 673445052}
+  m_Children: []
   m_Father: {fileID: 616394093}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 35.05, y: 637}
+  m_AnchoredPosition: {x: 35.05, y: 670}
   m_SizeDelta: {x: 818.7623, y: 2061.3948}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1097659442
@@ -14123,7 +14123,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c810475f38d8c2f4eae917e671a9ed4d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ec710c72eacadd24d9fb9dcd176b1ccf, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -19618,7 +19618,7 @@ MonoBehaviour:
   imgItem: {fileID: 276468631}
   effectBubble: {fileID: 659672370}
   btnBubble: {fileID: 1220356253}
-  typePlayThreeChoose: 0
+  typePlayThreeChoose: 1
   isChoose: 0
 --- !u!1 &1568311540
 GameObject:
@@ -20509,7 +20509,7 @@ MonoBehaviour:
   imgItem: {fileID: 428281918}
   effectBubble: {fileID: 806774387}
   btnBubble: {fileID: 290355482}
-  typePlayThreeChoose: 0
+  typePlayThreeChoose: 3
   isChoose: 0
 --- !u!1 &1654474755
 GameObject:
@@ -20568,7 +20568,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c810475f38d8c2f4eae917e671a9ed4d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 85301d4ec94284d429c44268870f1737, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

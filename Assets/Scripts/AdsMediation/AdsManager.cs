@@ -18,30 +18,30 @@ public class AdsManager : MonoSingleton<AdsManager>
     
     private void OnEnable()
     {
-        Signals.Get<LoadAdsSignal>().AddListener(ResultLoadAds);
+        Signals.Get<LoadAdsRewardSignal>().AddListener(ResultLoadAds);
     }
 
     private void OnDisable()
     {
-        Signals.Get<LoadAdsSignal>().RemoveListener(ResultLoadAds);
+        Signals.Get<LoadAdsRewardSignal>().RemoveListener(ResultLoadAds);
     }
 
-    private void ResultLoadAds(TypeAds levelPlayAdFormat, bool loadSuccess)
+    private void ResultLoadAds( bool loadSuccess)
     {
         if (loadSuccess)
         {
-            Signals.Get<ShowAdsSignal>().Dispatch(true);
+            Signals.Get<ShowAdsRewardSignal>().Dispatch(true);
         }
         else
         {
-            if (!CanShowAds(levelPlayAdFormat))
+            if (!CanShowAds(TypeAds.REWARDED))
             {
                 Debug.Log("All ads not available");
-                Signals.Get<ShowAdsSignal>().Dispatch(false);
+                Signals.Get<ShowAdsRewardSignal>().Dispatch(false);
             }
             else
             {
-                Signals.Get<ShowAdsSignal>().Dispatch(true);
+                Signals.Get<ShowAdsRewardSignal>().Dispatch(true);
             }
         }
     }
